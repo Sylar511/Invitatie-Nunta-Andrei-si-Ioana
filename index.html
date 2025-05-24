@@ -139,28 +139,67 @@
     </div>
 
     <h2 style="margin-top: 50px;">Confirmare prezență</h2>
-    <form name="rsvp" id="rsvp-form">
-      <label for="name">Nume si Prenume:</label>
-      <input type="text" id="name" name="name" required>
+<form name="rsvp" id="rsvp-form">
+  <label for="name">Nume și Prenume:</label>
+  <input type="text" id="name" name="name" required>
 
-      <label for="guests">Număr persoane:</label>
-      <select id="guests" name="guests" required>
-        <option value="" disabled selected>Alege numarul de persoane</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4+">4+</option>
-      </select>
+  <label for="guests">Număr persoane:</label>
+  <select id="guests" name="guests" required>
+    <option value="1" selected>1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4+">4+</option>
+  </select>
 
-      <label for="message">Un mesaj pentru miri (opțional):</label>
-      <input type="text" id="message" name="message">
+  <label for="message">Un mesaj pentru miri (opțional):</label>
+  <input type="text" id="message" name="message">
 
-      <button type="submit">Trimite confirmarea</button>
-      <p id="form-response" style="margin-top: 10px;"></p>
-    </form>
-  </div>
+  <!-- Câmp ascuns pentru IP -->
+  <input type="hidden" id="ip" name="ip">
 
-  <script>
+  <button type="submit">Trimite confirmarea</button>
+  <p id="form-response" style="margin-top: 10px;"></p>
+</form>
+
+<script>
+  // Obține IP-ul clientului și îl pune în câmpul ascuns
+  fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('ip').value = data.ip;
+    })
+    .catch(() => {
+      // Dacă IP-ul nu se poate obține, poate lăsa câmpul gol sau un text placeholder
+      document.getElementById('ip').value = "unknown";
+    });
+
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzyM6I1aGYHyG-J6p0wrjOyzAw3aafGEIawL5i3uIOjw5ItXwcjjvDA1B0oHyqfclZuKw/exec';
+  const form = document.getElementById('rsvp-form');
+  const responseText = document.getElementById('form-response');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    // Trimite datele către Apps Script
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      .then(response => response.json())
+      .then(data => {
+        responseText.innerText = data.message;
+        if(data.success) {
+          form.reset();
+          // Re-populate IP after reset
+          fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+              document.getElementById('ip').value = data.ip;
+            });
+        }
+      })
+      .catch(error => {
+        responseText.innerText = 'A apărut o eroare. Vă rugăm încercați din nou.';
+      });
+  });
+</script>
     const countdown = document.getElementById("countdown");
     const targetDate = new Date("2025-10-11T00:00:00").getTime();
 
