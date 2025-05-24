@@ -195,17 +195,21 @@
     const form = document.getElementById('rsvp-form');
     const responseText = document.getElementById('form-response');
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => {
-          responseText.innerText = 'Confirmarea a fost trimisă cu succes!';
-          form.reset();
-        })
-        .catch(error => {
-          responseText.innerText = 'A apărut o eroare. Vă rugăm încercați din nou.';
-        });
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    .then(res => res.json())
+    .then(data => {
+      responseText.innerText = data.message;
+      if (data.success) {
+        form.reset();
+        form.style.display = 'none';
+      }
+    })
+    .catch(error => {
+      responseText.innerText = 'A apărut o eroare. Vă rugăm încercați din nou.';
     });
+});
   </script>
 </body>
 </html>
