@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ioana & Andrei - Nuntă</title>
+  <title>Invitatie Nunta Ioana & Andrei</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: url('https://static.vecteezy.com/system/resources/previews/047/274/684/non_2x/beautiful-indoor-wedding-aisle-with-elegant-floral-decorations-in-soft-pastel-colors-creating-a-romantic-and-enchanting-atmosphere-photo.jpg') no-repeat center center fixed;
+      background: url('download.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Open Sans', sans-serif;
       color: #5d4037;
@@ -97,15 +97,46 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+      .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+      animation: fadeIn 2s ease-in-out forwards;
+      animation-delay: 4.5s;
+      opacity: 0;
+    }
+    .count-box {
+      background-color: #fff3f0;
+      border: 2px solid #b71c1c;
+      border-radius: 10px;
+      padding: 15px 20px;
+      min-width: 80px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #b71c1c;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+    }
+    .count-box span {
+      font-size: 1.8em;
+      display: block;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Ioana & Andrei</h1>
     <h2>11 octombrie 2025</h2>
-    <p>Cu bucurie vă invităm să fiți alături de noi în cea mai specială zi.</p>
+    <p>Cu bucurie vă invităm să fiți alături de noi în cea mai specială zi a noastra.</p>
 
-    <div class="countdown" id="countdown">Se încarcă contorul...</div>
+    <div class="countdown" id="countdown">
+  <div class="count-box"><span id="days">--</span><div>zile</div></div>
+  <div class="count-box"><span id="hours">--</span><div>ore</div></div>
+  <div class="count-box"><span id="minutes">--</span><div>minute</div></div>
+  <div class="count-box"><span id="seconds">--</span><div>secunde</div></div>
+</div>
 
     <div class="map">
       <h2>Cununia religioasă - Biserica Popa Tatu</h2>
@@ -115,10 +146,11 @@
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2847.936339542889!2d26.12212561553109!3d44.45619000492726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff47a42d3e03%3A0xc4d2efc15f3db9a!2sThe%20President!5e0!3m2!1sro!2sro!4v1716369054550!5m2!1sro!2sro" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
+    <h2 style="margin-top: 50px;">Confirmă prezența</h2>
     <div style="margin-top: 50px;">
-  <iframe src="https://forms.gle/dpVj3hY3U59wKEoh8" width="100%" height="1400" frameborder="0" marginheight="0" marginwidth="0" style="border:none;">Se încarcă…</iframe>
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd6QzxlvVKpUoZEAR0qjpYnduKvUk8SLZuYmWb37xZWewMeHA/viewform?embedded=true" width="100%" height="1400" frameborder="0" marginheight="0" marginwidth="0" style="border:none;">Se încarcă…</iframe>
 </div>
-
+  </div>
 
   <script>
     const countdown = document.getElementById("countdown");
@@ -129,7 +161,10 @@
       const distance = targetDate - now;
 
       if (distance < 0) {
-        countdown.innerText = "A sosit ziua cea mare!";
+        document.getElementById("days").innerText = days;
+document.getElementById("hours").innerText = hours;
+document.getElementById("minutes").innerText = minutes;
+document.getElementById("seconds").innerText = seconds;
         return;
       }
 
