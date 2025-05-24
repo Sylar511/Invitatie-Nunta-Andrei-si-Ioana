@@ -57,12 +57,30 @@
       border-radius: 10px;
     }
     .countdown {
-      font-size: 1.8em;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
       margin: 30px 0;
       font-weight: bold;
+      font-size: 1.8em;
       animation: fadeIn 2s ease-in-out forwards;
       animation-delay: 4.5s;
       opacity: 0;
+    }
+    .count-box {
+      background-color: #fff3f0;
+      border: 2px solid #b71c1c;
+      border-radius: 10px;
+      padding: 15px 20px;
+      min-width: 80px;
+      text-align: center;
+      color: #b71c1c;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+    }
+    .count-box span {
+      font-size: 1.8em;
+      display: block;
     }
     form {
       margin-top: 50px;
@@ -97,74 +115,48 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-      .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin: 30px 0;
-      animation: fadeIn 2s ease-in-out forwards;
-      animation-delay: 4.5s;
-      opacity: 0;
-    }
-    .count-box {
-      background-color: #fff3f0;
-      border: 2px solid #b71c1c;
-      border-radius: 10px;
-      padding: 15px 20px;
-      min-width: 80px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.2em;
-      color: #b71c1c;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-    }
-    .count-box span {
-      font-size: 1.8em;
-      display: block;
-    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Ioana&Andrei</h1>
+    <h1>Ioana & Andrei</h1>
     <h2>11 octombrie 2025</h2>
     <p>Cu bucurie vă invităm să fiți alături de noi în cea mai specială zi a noastră.</p>
 
     <div class="countdown" id="countdown">
-  <div class="count-box"><span id="days">--</span><div>zile</div></div>
-  <div class="count-box"><span id="hours">--</span><div>ore</div></div>
-  <div class="count-box"><span id="minutes">--</span><div>minute</div></div>
-  <div class="count-box"><span id="seconds">--</span><div>secunde</div></div>
-</div>
+      <div class="count-box"><span id="days">--</span><div>zile</div></div>
+      <div class="count-box"><span id="hours">--</span><div>ore</div></div>
+      <div class="count-box"><span id="minutes">--</span><div>minute</div></div>
+      <div class="count-box"><span id="seconds">--</span><div>secunde</div></div>
+    </div>
 
     <div class="map">
       <h2>Cununia religioasă - Biserica Popa Tatu</h2>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.569385606659!2d26.070166115530594!3d44.444034007775704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff4516ae7a21%3A0xfed7fa8abf8c9c2b!2sBiserica%20Popa%20Tatu!5e0!3m2!1sro!2sro!4v1716368982785!5m2!1sro!2sro" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.569385606659!2d26.070166115530594!3d44.444034007775704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff4516ae7a21%3A0xfed7fa8abf8c9c2b!2sBiserica%20Popa%20Tatu!5e0!3m2!1sro!2sro!4v1716368982785!5m2!1sro!2sro" allowfullscreen="" loading="lazy" title="Biserica Popa Tatu"></iframe>
 
       <h2 style="margin-top: 40px;">Petrecerea - The President</h2>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2847.936339542889!2d26.12212561553109!3d44.45619000492726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff47a42d3e03%3A0xc4d2efc15f3db9a!2sThe%20President!5e0!3m2!1sro!2sro!4v1716369054550!5m2!1sro!2sro" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2847.936339542889!2d26.12212561553109!3d44.45619000492726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff47a42d3e03%3A0xc4d2efc15f3db9a!2sThe%20President!5e0!3m2!1sro!2sro!4v1716369054550!5m2!1sro!2sro" allowfullscreen="" loading="lazy" title="The President"></iframe>
     </div>
 
     <h2 style="margin-top: 50px;">Confirmare prezență</h2>
-    <form name="rsvp" id="rsvp-form" style="margin-top: 50px;">
-  <label for="name">Nume si Prenume:</label>
-  <input type="text" id="name" name="name" required>
+    <form name="rsvp" id="rsvp-form">
+      <label for="name">Nume si Prenume:</label>
+      <input type="text" id="name" name="name" required>
 
-  <label for="guests">Număr persoane:</label>
-  <select id="guests" name="guests" required>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4+">4+</option>
-  </select>
+      <label for="guests">Număr persoane:</label>
+      <select id="guests" name="guests" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4+">4+</option>
+      </select>
 
-  <label for="message">Un mesaj pentru miri (opțional):</label>
-  <input type="text" id="message" name="message">
+      <label for="message">Un mesaj pentru miri (opțional):</label>
+      <input type="text" id="message" name="message">
 
-  <button type="submit">Trimite confirmarea</button>
-  <p id="form-response" style="margin-top: 10px;"></p>
-</form>
+      <button type="submit">Trimite confirmarea</button>
+      <p id="form-response" style="margin-top: 10px;"></p>
+    </form>
   </div>
 
   <script>
@@ -172,51 +164,47 @@
     const targetDate = new Date("2025-10-11T00:00:00").getTime();
 
     function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = targetDate - now;
+      const now = new Date().getTime();
+      const distance = targetDate - now;
 
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  if (distance < 0) {
-    document.getElementById("days").innerText = 0;
-    document.getElementById("hours").innerText = 0;
-    document.getElementById("minutes").innerText = 0;
-    document.getElementById("seconds").innerText = 0;
-    return;
-  }
-
-  document.getElementById("days").innerText = days;
-  document.getElementById("hours").innerText = hours;
-  document.getElementById("minutes").innerText = minutes;
-  document.getElementById("seconds").innerText = seconds;
-}
-}
+      if (distance < 0) {
+        document.getElementById("days").innerText = 0;
+        document.getElementById("hours").innerText = 0;
+        document.getElementById("minutes").innerText = 0;
+        document.getElementById("seconds").innerText = 0;
+        return;
       }
 
-      
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
     }
 
     setInterval(updateCountdown, 1000);
   </script>
-<script>
- const scriptURL = 'https://script.google.com/macros/s/AKfycbzyM6I1aGYHyG-J6p0wrjOyzAw3aafGEIawL5i3uIOjw5ItXwcjjvDA1B0oHyqfclZuKw/exec';
-  const form = document.getElementById('rsvp-form');
-  const responseText = document.getElementById('form-response');
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-      .then(response => {
-        responseText.innerText = 'Confirmarea a fost trimisă cu succes!';
-        form.reset();
-      })
-      .catch(error => {
-        responseText.innerText = 'A apărut o eroare. Vă rugăm încercați din nou.';
-      });
-  });
-</script>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzyM6I1aGYHyG-J6p0wrjOyzAw3aafGEIawL5i3uIOjw5ItXwcjjvDA1B0oHyqfclZuKw/exec';
+    const form = document.getElementById('rsvp-form');
+    const responseText = document.getElementById('form-response');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          responseText.innerText = 'Confirmarea a fost trimisă cu succes!';
+          form.reset();
+        })
+        .catch(error => {
+          responseText.innerText = 'A apărut o eroare. Vă rugăm încercați din nou.';
+        });
+    });
+  </script>
 </body>
 </html>
