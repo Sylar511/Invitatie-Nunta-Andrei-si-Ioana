@@ -99,6 +99,10 @@
       border: 1px solid #ccc;
       border-radius: 5px;
     }
+    input.error, select.error {
+      border-color: red;
+      background-color: #ffe5e5;
+    }
     button {
       background-color: #b71c1c;
       color: white;
@@ -109,6 +113,10 @@
     }
     button:hover {
       background-color: #8e1010;
+    }
+    #form-response {
+      font-weight: bold;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -154,10 +162,10 @@
   <h2>Confirmă prezența</h2>
   <form id="rsvp-form" name="rsvp">
     <label for="name">Nume și Prenume:</label>
-    <input type="text" id="name" name="name" required>
+    <input type="text" id="name" name="name">
 
     <label for="guests">Număr persoane:</label>
-    <select id="guests" name="guests" required>
+    <select id="guests" name="guests">
       <option value="" disabled selected>Selectează</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -209,11 +217,36 @@
 
   form.addEventListener('submit', e => {
     e.preventDefault();
+
+    const nameField = document.getElementById('name');
+    const guestsField = document.getElementById('guests');
+
+    // Resetare stil
+    nameField.classList.remove('error');
+    guestsField.classList.remove('error');
+    responseText.innerText = "";
+
+    let valid = true;
+
+    if (!nameField.value.trim()) {
+      nameField.classList.add('error');
+      valid = false;
+    }
+    if (!guestsField.value) {
+      guestsField.classList.add('error');
+      valid = false;
+    }
+
+    if (!valid) {
+      responseText.innerText = "Te rugăm să completezi câmpurile obligatorii.";
+      return;
+    }
+
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
       .then(res => res.json())
       .then(data => {
-        responseText.innerText = data.message;
-        if (data.success) {
+        responseText.innerText = data.message || "Confirmarea a fost trimisă cu succes!";
+        if (data.success !== false) {
           form.reset();
           setIP();
         }
