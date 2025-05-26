@@ -211,17 +211,29 @@
   }
 
   window.addEventListener('DOMContentLoaded', () => {
-    setIP();
-    if (localStorage.getItem('rsvpConfirmed') === 'true') {
-      form.style.display = 'none';
-      const confirmMessage = document.createElement('p');
-      confirmMessage.style.color = '#2e7d32';
-      confirmMessage.style.fontWeight = 'bold';
-      confirmMessage.style.marginTop = '20px';
-      confirmMessage.innerText = "Ai trimis deja confirmarea. Îți mulțumim!";
-      form.parentElement.appendChild(confirmMessage);
-    }
-  });
+  fetch('https://api.ipify.org?format=json')
+    .then(res => res.json())
+    .then(data => {
+      ipField.value = data.ip;
+
+      fetch(`${scriptURL}?ip=${data.ip}`)
+        .then(res => res.json())
+        .then(info => {
+          if (info.exists) {
+            localStorage.setItem('rsvpConfirmed', 'true');
+            form.style.display = 'none';
+            const confirmMessage = document.createElement('p');
+            confirmMessage.style.color = '#2e7d32';
+            confirmMessage.style.fontWeight = 'bold';
+            confirmMessage.style.marginTop = '20px';
+            confirmMessage.innerText = "Ai trimis deja confirmarea. Îți mulțumim!";
+            form.parentElement.appendChild(confirmMessage);
+          } else {
+            localStorage.removeItem('rsvpConfirmed');
+          }
+        });
+    });
+});
 
   form.addEventListener('submit', e => {
     e.preventDefault();
