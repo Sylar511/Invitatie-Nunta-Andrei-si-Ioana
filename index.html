@@ -218,25 +218,21 @@
   form.addEventListener('submit', e => {
     e.preventDefault();
 
-    const nameField = document.getElementById('name');
-    const guestsField = document.getElementById('guests');
-
-    // Resetare stil
-    nameField.classList.remove('error');
-    guestsField.classList.remove('error');
+    const name = document.getElementById('name');
+    const guests = document.getElementById('guests');
+    name.classList.remove('error');
+    guests.classList.remove('error');
     responseText.innerText = "";
 
     let valid = true;
-
-    if (!nameField.value.trim()) {
-      nameField.classList.add('error');
+    if (!name.value.trim()) {
+      name.classList.add('error');
       valid = false;
     }
-    if (!guestsField.value) {
-      guestsField.classList.add('error');
+    if (!guests.value) {
+      guests.classList.add('error');
       valid = false;
     }
-
     if (!valid) {
       responseText.innerText = "Te rugăm să completezi câmpurile obligatorii.";
       return;
@@ -245,8 +241,8 @@
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
       .then(res => res.json())
       .then(data => {
-        responseText.innerText = data.message || "Confirmarea a fost trimisă cu succes!";
-        if (data.success !== false) {
+        responseText.innerText = data.message;
+        if (data.success) {
           form.reset();
           setIP();
         }
