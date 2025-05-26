@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -151,12 +150,12 @@
 
 <section class="section" id="ceremony">
   <h2>Cununia religioasă - Biserica Popa Tatu</h2>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.569385606659!2d26.070166115530594!3d44.444034007775704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff4516ae7a21%3A0xfed7fa8abf8c9c2b!2sBiserica%20Popa%20Tatu!5e0!3m2!1sro!2sro!4v1716368982785!5m2!1sro!2sro" allowfullscreen="" loading="lazy"></iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.569385606659!2d26.070166115530594!3d44.444034007775704!..."></iframe>
 </section>
 
 <section class="section" id="party">
   <h2>Petrecerea - The President</h2>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2847.936339542889!2d26.12212561553109!3d44.45619000492726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff47a42d3e03%3A0xc4d2efc15f3db9a!2sThe%20President!5e0!3m2!1sro!2sro!4v1716369054550!5m2!1sro!2sro" allowfullscreen="" loading="lazy"></iframe>
+  <iframe src="https://www.google.com/maps/embed?..."></iframe>
 </section>
 
 <section class="section" id="rsvp">
@@ -164,7 +163,6 @@
   <form id="rsvp-form" name="rsvp">
     <label for="name">Nume și Prenume:</label>
     <input type="text" id="name" name="name" required>
-
     <label for="guests">Număr persoane:</label>
     <select id="guests" name="guests" required>
       <option value="" disabled selected>Selectează</option>
@@ -173,10 +171,8 @@
       <option value="3">3</option>
       <option value="4+">4+</option>
     </select>
-
     <label for="message">Un mesaj pentru miri (opțional):</label>
     <input type="text" id="message" name="message">
-
     <input type="hidden" id="ip" name="ip">
     <button type="submit">Trimite confirmarea</button>
     <p id="form-response"></p>
@@ -192,7 +188,6 @@
     const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const s = Math.floor((distance % (1000 * 60)) / 1000);
-
     document.getElementById("days").innerText = d;
     document.getElementById("hours").innerText = h;
     document.getElementById("minutes").innerText = m;
@@ -214,7 +209,19 @@
       .then(data => ipField.value = data.ip)
       .catch(() => ipField.value = "unknown");
   }
-  setIP();
+
+  window.addEventListener('DOMContentLoaded', () => {
+    setIP();
+    if (localStorage.getItem('rsvpConfirmed') === 'true') {
+      form.style.display = 'none';
+      const confirmMessage = document.createElement('p');
+      confirmMessage.style.color = '#2e7d32';
+      confirmMessage.style.fontWeight = 'bold';
+      confirmMessage.style.marginTop = '20px';
+      confirmMessage.innerText = "Ai trimis deja confirmarea. Îți mulțumim!";
+      form.parentElement.appendChild(confirmMessage);
+    }
+  });
 
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -243,6 +250,7 @@
       .then(res => res.json())
       .then(data => {
         if (data.success) {
+          localStorage.setItem('rsvpConfirmed', 'true');
           form.reset();
           form.style.display = 'none';
           const confirmMessage = document.createElement('p');
