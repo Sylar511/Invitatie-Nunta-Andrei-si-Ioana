@@ -1,60 +1,61 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Invitatie Nunta Ioana & Andrei</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ioana & Andrei - Nuntă</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
       background: url('https://raw.githubusercontent.com/Sylar511/Invitatie-Nunta-Andrei-si-Ioana/refs/heads/main/wedding-stage-decoration-background.jpeg') no-repeat center center fixed;
       background-size: cover;
-      font-family: 'Open Sans', sans-serif;
       color: #5d4037;
-      overflow-x: hidden;
     }
-    .container {
-      text-align: center;
-      padding: 50px 20px;
-      background-color: rgba(255, 255, 255, 0.85);
-      border-radius: 12px;
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    header nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    header a {
+      text-decoration: none;
+      color: #b71c1c;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .section {
+      padding: 100px 20px 50px;
       max-width: 900px;
       margin: auto;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      margin-top: 70px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 4em;
       color: #b71c1c;
-      animation: fadeIn 2s ease-in-out forwards;
-    }
-    h2, p {
-      opacity: 0;
-      animation: fadeIn 2s ease-in-out forwards;
-    }
-    h2 {
-      font-size: 2em;
-      margin-top: 20px;
-      animation-delay: 2s;
-    }
-    p {
-      font-size: 1.2em;
-      margin-top: 10px;
-      animation-delay: 3.5s;
-    }
-    .map {
-      margin-top: 40px;
-      animation: fadeIn 2s ease-in-out forwards;
-      animation-delay: 5s;
-      opacity: 0;
-    }
-    iframe {
-      width: 100%;
-      max-width: 600px;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
     }
     .countdown {
       display: flex;
@@ -64,9 +65,6 @@
       margin: 30px 0;
       font-weight: bold;
       font-size: 1.8em;
-      animation: fadeIn 2s ease-in-out forwards;
-      animation-delay: 4.5s;
-      opacity: 0;
     }
     .count-box {
       background-color: #fff3f0;
@@ -78,16 +76,17 @@
       color: #b71c1c;
       box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
     }
-    .count-box span {
-      font-size: 1.8em;
-      display: block;
+    iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+      margin: 20px 0;
     }
     form {
-      margin-top: 50px;
+      margin-top: 30px;
       text-align: left;
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
     }
     label, input, select, button {
       display: block;
@@ -111,144 +110,131 @@
     button:hover {
       background-color: #8e1010;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Ioana & Andrei</h1>
-    <h2>11 octombrie 2025</h2>
-    <p>Cu bucurie vă invităm să fiți alături de noi în cea mai specială zi a noastră.</p>
 
-    <div class="countdown" id="countdown">
-      <div class="count-box"><span id="days">--</span><div>zile</div></div>
-      <div class="count-box"><span id="hours">--</span><div>ore</div></div>
-      <div class="count-box"><span id="minutes">--</span><div>minute</div></div>
-      <div class="count-box"><span id="seconds">--</span><div>secunde</div></div>
-    </div>
+<header>
+  <nav>
+    <a href="#intro">Acasă</a>
+    <a href="#countdown">Countdown</a>
+    <a href="#ceremony">Cununia</a>
+    <a href="#party">Petrecerea</a>
+    <a href="#rsvp">Confirmare</a>
+  </nav>
+</header>
 
-    <div class="map">
-      <h2>Cununia religioasă - Biserica Popa Tatu</h2>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.569385606659!2d26.070166115530594!3d44.444034007775704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff4516ae7a21%3A0xfed7fa8abf8c9c2b!2sBiserica%20Popa%20Tatu!5e0!3m2!1sro!2sro!4v1716368982785!5m2!1sro!2sro" allowfullscreen="" loading="lazy" title="Biserica Popa Tatu"></iframe>
+<section class="section" id="intro">
+  <h1>Ioana & Andrei</h1>
+  <h2>11 octombrie 2025</h2>
+  <p>Cu bucurie vă invităm să fiți alături de noi în cea mai specială zi a noastră.</p>
+</section>
 
-      <h2 style="margin-top: 40px;">Petrecerea - The President</h2>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2847.936339542889!2d26.12212561553109!3d44.45619000492726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff47a42d3e03%3A0xc4d2efc15f3db9a!2sThe%20President!5e0!3m2!1sro!2sro!4v1716369054550!5m2!1sro!2sro" allowfullscreen="" loading="lazy" title="The President"></iframe>
-    </div>
+<section class="section" id="countdown">
+  <h2>Numărătoarea inversă</h2>
+  <div class="countdown">
+    <div class="count-box"><span id="days">--</span><div>zile</div></div>
+    <div class="count-box"><span id="hours">--</span><div>ore</div></div>
+    <div class="count-box"><span id="minutes">--</span><div>minute</div></div>
+    <div class="count-box"><span id="seconds">--</span><div>secunde</div></div>
+  </div>
+</section>
 
-    <h2 style="margin-top: 50px;">Confirmare prezență</h2>
-<form name="rsvp" id="rsvp-form">
-  <label for="name">Nume și Prenume:</label>
-  <input type="text" id="name" name="name" required>
+<section class="section" id="ceremony">
+  <h2>Cununia religioasă - Biserica Popa Tatu</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.569385606659!2d26.070166115530594!3d44.444034007775704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff4516ae7a21%3A0xfed7fa8abf8c9c2b!2sBiserica%20Popa%20Tatu!5e0!3m2!1sro!2sro!4v1716368982785!5m2!1sro!2sro" allowfullscreen="" loading="lazy"></iframe>
+</section>
 
-  <label for="guests">Număr persoane:</label>
-  <select id="guests" name="guests" required>
-    <option value="1" selected>1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4+">4+</option>
-  </select>
+<section class="section" id="party">
+  <h2>Petrecerea - The President</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2847.936339542889!2d26.12212561553109!3d44.45619000492726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff47a42d3e03%3A0xc4d2efc15f3db9a!2sThe%20President!5e0!3m2!1sro!2sro!4v1716369054550!5m2!1sro!2sro" allowfullscreen="" loading="lazy"></iframe>
+</section>
 
-  <label for="message">Un mesaj pentru miri (opțional):</label>
-  <input type="text" id="message" name="message">
+<section class="section" id="rsvp">
+  <h2>Confirmă prezența</h2>
+  <form id="rsvp-form" name="rsvp">
+    <label for="name">Nume și Prenume:</label>
+    <input type="text" id="name" name="name" required>
 
-  <!-- Câmp ascuns pentru IP -->
-  <input type="hidden" id="ip" name="ip">
+    <label for="guests">Număr persoane:</label>
+    <select id="guests" name="guests" required>
+      <option value="" disabled selected>Selectează</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4+">4+</option>
+    </select>
 
-  <button type="submit">Trimite confirmarea</button>
-  <p id="form-response" style="margin-top: 10px;"></p>
-</form>
+    <label for="message">Un mesaj pentru miri (opțional):</label>
+    <input type="text" id="message" name="message">
+
+    <input type="hidden" id="ip" name="ip">
+    <button type="submit">Trimite confirmarea</button>
+    <p id="form-response"></p>
+  </form>
+</section>
 
 <script>
-  // Obține IP-ul clientului și îl pune în câmpul ascuns
-  fetch('https://api.ipify.org?format=json')
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById('ip').value = data.ip;
-    })
-    .catch(() => {
-      // Dacă IP-ul nu se poate obține, poate lăsa câmpul gol sau un text placeholder
-      document.getElementById('ip').value = "unknown";
-    });
+  const targetDate = new Date("2025-10-11T00:00:00").getTime();
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((distance % (1000 * 60)) / 1000);
 
+    document.getElementById("days").innerText = d;
+    document.getElementById("hours").innerText = h;
+    document.getElementById("minutes").innerText = m;
+    document.getElementById("seconds").innerText = s;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+<script>
   const scriptURL = 'https://script.google.com/macros/s/AKfycbzyM6I1aGYHyG-J6p0wrjOyzAw3aafGEIawL5i3uIOjw5ItXwcjjvDA1B0oHyqfclZuKw/exec';
   const form = document.getElementById('rsvp-form');
   const responseText = document.getElementById('form-response');
+  const ipField = document.getElementById('ip');
+
+  function setIP() {
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => ipField.value = data.ip)
+      .catch(() => ipField.value = "unknown");
+  }
+  setIP();
 
   form.addEventListener('submit', e => {
     e.preventDefault();
-
-    // Trimite datele către Apps Script
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-      .then(response => response.json())
+      .then(res => res.json())
       .then(data => {
         responseText.innerText = data.message;
-        if(data.success) {
+        if (data.success) {
           form.reset();
-          // Re-populate IP after reset
-          fetch('https://api.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-              document.getElementById('ip').value = data.ip;
-            });
+          setIP();
         }
       })
-      .catch(error => {
-        responseText.innerText = 'A apărut o eroare. Vă rugăm încercați din nou.';
+      .catch(() => {
+        responseText.innerText = "Eroare la trimitere. Încearcă din nou.";
       });
   });
 </script>
-    const countdown = document.getElementById("countdown");
-    const targetDate = new Date("2025-10-11T00:00:00").getTime();
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      if (distance < 0) {
-        document.getElementById("days").innerText = 0;
-        document.getElementById("hours").innerText = 0;
-        document.getElementById("minutes").innerText = 0;
-        document.getElementById("seconds").innerText = 0;
-        return;
+<script>
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
       }
-
-      document.getElementById("days").innerText = days;
-      document.getElementById("hours").innerText = hours;
-      document.getElementById("minutes").innerText = minutes;
-      document.getElementById("seconds").innerText = seconds;
-    }
-
-    setInterval(updateCountdown, 1000);
-  </script>
-
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzyM6I1aGYHyG-J6p0wrjOyzAw3aafGEIawL5i3uIOjw5ItXwcjjvDA1B0oHyqfclZuKw/exec';
-    const form = document.getElementById('rsvp-form');
-    const responseText = document.getElementById('form-response');
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-    .then(res => res.json())
-    .then(data => {
-      responseText.innerText = data.message;
-      if (data.success) {
-        form.reset();
-        form.style.display = 'none';
-      }
-    })
-    .catch(error => {
-      responseText.innerText = 'A apărut o eroare. Vă rugăm încercați din nou.';
     });
-});
-  </script>
+  }, { threshold: 0.1 });
+  sections.forEach(section => observer.observe(section));
+</script>
+
 </body>
 </html>
