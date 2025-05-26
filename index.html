@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -162,10 +163,10 @@
   <h2>Confirmă prezența</h2>
   <form id="rsvp-form" name="rsvp">
     <label for="name">Nume și Prenume:</label>
-    <input type="text" id="name" name="name">
+    <input type="text" id="name" name="name" required>
 
     <label for="guests">Număr persoane:</label>
-    <select id="guests" name="guests">
+    <select id="guests" name="guests" required>
       <option value="" disabled selected>Selectează</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -241,10 +242,17 @@
     fetch(scriptURL, { method: 'POST', body: new FormData(form) })
       .then(res => res.json())
       .then(data => {
-        responseText.innerText = data.message;
         if (data.success) {
           form.reset();
-          setIP();
+          form.style.display = 'none';
+          const confirmMessage = document.createElement('p');
+          confirmMessage.style.color = '#2e7d32';
+          confirmMessage.style.fontWeight = 'bold';
+          confirmMessage.style.marginTop = '20px';
+          confirmMessage.innerText = data.message;
+          form.parentElement.appendChild(confirmMessage);
+        } else {
+          responseText.innerText = data.message;
         }
       })
       .catch(() => {
