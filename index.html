@@ -183,34 +183,33 @@ html {
 <section class="section" id="rsvp">
   <h2>Confirmă prezența</h2>
   <form id="rsvp-form" name="rsvp">
-   <label for="lastname">Nume:</label>
-<input type="text" id="lastname" name="lastname" required>
+    <label for="lastname">Nume:</label>
+    <input type="text" id="lastname" name="lastname" required>
 
-<label for="firstname">Prenume:</label>
-<input type="text" id="firstname" name="firstname" required>
+    <label for="firstname">Prenume:</label>
+    <input type="text" id="firstname" name="firstname" required>
 
+    <label for="attendance">Vei fi prezent(ă)?</label>
+    <select id="attendance" name="attendance" required>
+      <option value="" disabled selected>Selectează</option>
+      <option value="Da">Da</option>
+      <option value="Nu">Nu</option>
+    </select>
 
-<label for="attendance">Vei fi prezent(ă)?</label>
-<select id="attendance" name="attendance" required>
-  <option value="" disabled selected>Selectează</option>
-  <option value="Da">Da</option>
-  <option value="Nu">Nu</option>
-</select>
+    <div id="guests-wrapper" style="display: none;">
+      <label for="guests">Număr persoane:</label>
+      <select id="guests" name="guests">
+        <option value="" disabled selected>Selectează</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4+">4+</option>
+      </select>
+    </div>
 
-<div id="guests-wrapper">
-  <label for="guests">Număr persoane:</label>
-  <select id="guests" name="guests">
-    <option value="" disabled selected>Selectează</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4+">4+</option>
-  </select>
-</div>
-    
     <label for="message">Un mesaj pentru miri (opțional):</label>
     <input type="text" id="message" name="message">
-    
+
     <input type="hidden" id="ip" name="ip">
     <button type="submit">Trimite confirmarea</button>
     <p id="form-response"></p>
@@ -218,131 +217,107 @@ html {
 </section>
 
 <script>
-  const targetDate = new Date("2025-10-11T00:00:00").getTime();
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("days").innerText = d;
-    document.getElementById("hours").innerText = h;
-    document.getElementById("minutes").innerText = m;
-    document.getElementById("seconds").innerText = s;
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-</script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbweBzjk8BY_LNRk9V-2TrzEo2s1-HZ_p1tBXhQnHlT9CNP2rB6rk1YPABOYolNXWVGJgA/exec';
+    const form = document.getElementById('rsvp-form');
+    const responseText = document.getElementById('form-response');
+    const lastname = document.getElementById('lastname');
+    const firstname = document.getElementById('firstname');
+    const guests = document.getElementById('guests');
+    const attendance = document.getElementById('attendance');
+    const guestsWrapper = document.getElementById('guests-wrapper');
+    const ipField = document.getElementById('ip');
 
-<script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbweBzjk8BY_LNRk9V-2TrzEo2s1-HZ_p1tBXhQnHlT9CNP2rB6rk1YPABOYolNXWVGJgA/exec';
-  const form = document.getElementById('rsvp-form');
-  const responseText = document.getElementById('form-response');
-  const ipField = document.getElementById('ip');
-
-  function setIP() {
     fetch('https://api.ipify.org?format=json')
       .then(res => res.json())
-      .then(data => ipField.value = data.ip)
-      .catch(() => ipField.value = "unknown");
-  }
+      .then(data => {
+        ipField.value = data.ip;
 
-  window.addEventListener('DOMContentLoaded', () => {
-  fetch('https://api.ipify.org?format=json')
-    .then(res => res.json())
-    .then(data => {
-      ipField.value = data.ip;
+        const fullName = `${lastname.value.trim()} ${firstname.value.trim()}`.toLowerCase();
+        fetch(`${scriptURL}?name=${encodeURIComponent(fullName)}`)
+          .then(res => res.json())
+          .then(info => {
+            if (info.exists) {
+              localStorage.setItem('rsvpConfirmed', 'true');
+              form.style.display = 'none';
+              const msg = document.createElement('p');
+              msg.innerText = "Ai trimis deja confirmarea. Îți mulțumim!";
+              msg.style.color = '#2e7d32';
+              msg.style.fontWeight = 'bold';
+              form.parentElement.appendChild(msg);
+            }
+          });
+      });
 
-      fetch(`${scriptURL}?check=1&name=${encodeURIComponent(firstname.value.trim() + " " + lastname.value.trim())}`)
-        .then(res => res.json())
-        .then(info => {
-          if (info.exists) {
-            localStorage.setItem('rsvpConfirmed', 'false');
-          } else {
-            localStorage.removeItem('rsvpConfirmed');
-          }
-        });
-    });
-});
-  
-const form = document.getElementById('rsvp-form');
-const responseText = document.getElementById('form-response');
-const lastname = document.getElementById('lastname');
-const firstname = document.getElementById('firstname');
-const guests = document.getElementById('guests');
-const attendance = document.getElementById('attendance');
-const guestsWrapper = document.getElementById('guests-wrapper');
-
-attendance.addEventListener('change', () => {
-  if (attendance.value === "Da") {
-    guestsWrapper.style.display = "block";
-  } else {
-    guestsWrapper.style.display = "none";
-    guests.value = ""; // resetăm valoarea
-    guests.classList.remove('error');
-  }
-});
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-
-  lastname.classList.remove('error');
-  firstname.classList.remove('error');
-  guests.classList.remove('error');
-  attendance.classList.remove('error');
-  responseText.innerText = "";
-
-  let valid = true;
-
-  if (!lastname.value.trim()) {
-    lastname.classList.add('error');
-    valid = false;
-  }
-  if (!firstname.value.trim()) {
-    firstname.classList.add('error');
-    valid = false;
-  }
-  if (!attendance.value) {
-    attendance.classList.add('error');
-    valid = false;
-  }
-  if (attendance.value === "Da" && !guests.value) {
-    guests.classList.add('error');
-    valid = false;
-  }
-
-  if (!valid) {
-    responseText.innerText = "Te rugăm să completezi câmpurile obligatorii.";
-    return;
-  }
-
-  const formData = new FormData(form);
-  fetch('https://script.google.com/macros/s/AKfycbweBzjk8BY_LNRk9V-2TrzEo2s1-HZ_p1tBXhQnHlT9CNP2rB6rk1YPABOYolNXWVGJgA/exec', {
-    method: 'POST',
-    body: formData
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        form.reset();
-        form.style.display = 'none';
-        const msg = document.createElement('p');
-        msg.innerText = data.message;
-        msg.style.color = '#2e7d32';
-        msg.style.fontWeight = 'bold';
-        form.parentElement.appendChild(msg);
-        window.scrollTo({ top: 0, behavior: 'instant' });
+    attendance.addEventListener('change', () => {
+      if (attendance.value === "Da") {
+        guestsWrapper.style.display = "block";
       } else {
-        responseText.innerText = data.message;
+        guestsWrapper.style.display = "none";
+        guests.value = "";
+        guests.classList.remove('error');
       }
-    })
-    .catch(() => {
-      responseText.innerText = "Eroare la trimitere. Încearcă din nou.";
+    });
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      lastname.classList.remove('error');
+      firstname.classList.remove('error');
+      guests.classList.remove('error');
+      attendance.classList.remove('error');
+      responseText.innerText = "";
+
+      let valid = true;
+
+      if (!lastname.value.trim()) {
+        lastname.classList.add('error');
+        valid = false;
+      }
+      if (!firstname.value.trim()) {
+        firstname.classList.add('error');
+        valid = false;
+      }
+      if (!attendance.value) {
+        attendance.classList.add('error');
+        valid = false;
+      }
+      if (attendance.value === "Da" && !guests.value) {
+        guests.classList.add('error');
+        valid = false;
+      }
+
+      if (!valid) {
+        responseText.innerText = "Te rugăm să completezi câmpurile obligatorii.";
+        return;
+      }
+
+      const formData = new FormData(form);
+      fetch(scriptURL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          localStorage.setItem('rsvpConfirmed', 'true');
+          form.reset();
+          form.style.display = 'none';
+          const msg = document.createElement('p');
+          msg.innerText = data.message;
+          msg.style.color = '#2e7d32';
+          msg.style.fontWeight = 'bold';
+          form.parentElement.appendChild(msg);
+          window.scrollTo({ top: 0, behavior: 'instant' });
+        } else {
+          responseText.innerText = data.message;
+        }
+      })
+      .catch(() => {
+        responseText.innerText = "Eroare la trimitere. Încearcă din nou.";
+      });
     });
   });
-});
-
 </script>
 
 <script>
