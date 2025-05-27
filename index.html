@@ -76,14 +76,6 @@
       color: #b71c1c;
       box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
     }
-    iframe {
-      width: 100%;
-      max-width: 600px;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
-      margin: 20px 0;
-    }
     form {
       margin-top: 30px;
       text-align: left;
@@ -119,27 +111,12 @@
       margin-top: 10px;
     }
     @media (max-width: 768px) {
-  h1 {
-    font-size: 2.5em;
-  }
-  .countdown {
-    flex-direction: column;
-    align-items: center;
-  }
-  iframe {
-    height: 200px;
-  }
-  form label, form input, form select, form button {
-    font-size: 0.95em;
-  }
-  header nav {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-html {
-  scroll-padding-top: 70px;
-}
+      h1 { font-size: 2.5em; }
+      .countdown { flex-direction: column; align-items: center; }
+      form label, form input, form select, form button { font-size: 0.95em; }
+      header nav { flex-direction: column; gap: 10px; }
+    }
+    html { scroll-padding-top: 70px; }
   </style>
 </head>
 <body>
@@ -169,8 +146,8 @@ html {
     <div class="count-box"><span id="seconds">--</span><div>secunde</div></div>
   </div>
 </section>
-
-<section class="section" id="ceremony">
+  
+  <section class="section" id="ceremony">
   <h2>Cununia religioasă - Biserica Popa Tatu</h2>
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d289.16051548333917!2d26.08676277829782!3d44.440675237760864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff5a4c5b1e49%3A0xe03b21eb9cd4eaf6!2sBiserica%20Popa%20Tatu!5e1!3m2!1sro!2sro!4v1748279558822!5m2!1sro!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>
@@ -183,8 +160,10 @@ html {
 <section class="section" id="rsvp">
   <h2>Confirmă prezența</h2>
   <form id="rsvp-form" name="rsvp">
-    <label for="name">Nume și Prenume:</label>
-    <input type="text" id="name" name="name" required>
+    <label for="lastname">Nume:</label>
+    <input type="text" id="lastname" name="lastname" required>
+    <label for="firstname">Prenume:</label>
+    <input type="text" id="firstname" name="firstname" required>
     <label for="guests">Număr persoane:</label>
     <select id="guests" name="guests" required>
       <option value="" disabled selected>Selectează</option>
@@ -202,123 +181,82 @@ html {
 </section>
 
 <script>
-  const targetDate = new Date("2025-10-11T00:00:00").getTime();
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-    const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const s = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("days").innerText = d;
-    document.getElementById("hours").innerText = h;
-    document.getElementById("minutes").innerText = m;
-    document.getElementById("seconds").innerText = s;
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-</script>
-
-<script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzyM6I1aGYHyG-J6p0wrjOyzAw3aafGEIawL5i3uIOjw5ItXwcjjvDA1B0oHyqfclZuKw/exec';
+  const scriptURL = 'LINKUL_TĂU_SCRIPT';
   const form = document.getElementById('rsvp-form');
   const responseText = document.getElementById('form-response');
   const ipField = document.getElementById('ip');
 
-  function setIP() {
+  window.addEventListener('DOMContentLoaded', () => {
     fetch('https://api.ipify.org?format=json')
       .then(res => res.json())
-      .then(data => ipField.value = data.ip)
-      .catch(() => ipField.value = "unknown");
-  }
+      .then(data => {
+        ipField.value = data.ip;
 
-  window.addEventListener('DOMContentLoaded', () => {
-  fetch('https://api.ipify.org?format=json')
-    .then(res => res.json())
-    .then(data => {
-      ipField.value = data.ip;
-
-      fetch(`${scriptURL}?ip=${data.ip}`)
-        .then(res => res.json())
-        .then(info => {
-          if (info.exists) {
-            localStorage.setItem('rsvpConfirmed', 'true');
-            form.style.display = 'none';
-            const confirmMessage = document.createElement('p');
-            confirmMessage.style.color = '#2e7d32';
-            confirmMessage.style.fontWeight = 'bold';
-            confirmMessage.style.marginTop = '20px';
-            confirmMessage.innerText = "Ai trimis deja confirmarea. Îți mulțumim!";
-            form.parentElement.appendChild(confirmMessage);
-          } else {
-            localStorage.removeItem('rsvpConfirmed');
-          }
-        });
-    });
-});
+        fetch(`${scriptURL}?ip=${data.ip}`)
+          .then(res => res.json())
+          .then(info => {
+            if (info.exists) {
+              localStorage.setItem('rsvpConfirmed', 'false');
+            } else {
+              localStorage.removeItem('rsvpConfirmed');
+            }
+          });
+      });
+  });
 
   form.addEventListener('submit', e => {
     e.preventDefault();
 
-    const name = document.getElementById('name');
+    const lastname = document.getElementById('lastname');
+    const firstname = document.getElementById('firstname');
     const guests = document.getElementById('guests');
-    name.classList.remove('error');
+
+    lastname.classList.remove('error');
+    firstname.classList.remove('error');
     guests.classList.remove('error');
     responseText.innerText = "";
 
     let valid = true;
-    if (!name.value.trim()) {
-      name.classList.add('error');
-      valid = false;
-    }
-    if (!guests.value) {
-      guests.classList.add('error');
-      valid = false;
-    }
+    if (!lastname.value.trim()) { lastname.classList.add('error'); valid = false; }
+    if (!firstname.value.trim()) { firstname.classList.add('error'); valid = false; }
+    if (!guests.value) { guests.classList.add('error'); valid = false; }
+
     if (!valid) {
       responseText.innerText = "Te rugăm să completezi câmpurile obligatorii.";
       return;
     }
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    fetch(`${scriptURL}?name=${encodeURIComponent(firstname.value.trim() + " " + lastname.value.trim())}`)
       .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          localStorage.setItem('rsvpConfirmed', 'true');
-          form.reset();
-          form.style.display = 'none';
-          const confirmMessage = document.createElement('p');
-          confirmMessage.style.color = '#2e7d32';
-          confirmMessage.style.fontWeight = 'bold';
-          confirmMessage.style.marginTop = '20px';
-          confirmMessage.innerText = data.message;
-          form.parentElement.appendChild(confirmMessage);
-        } else {
-          responseText.innerText = data.message;
+      .then(check => {
+        if (check.exists) {
+          responseText.innerText = "Ai trimis deja confirmarea cu acest nume.";
+          return;
         }
-      })
-      .catch(() => {
-        responseText.innerText = "Eroare la trimitere. Încearcă din nou.";
+
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              localStorage.setItem('rsvpConfirmed', 'true');
+              form.reset();
+              form.style.display = 'none';
+              const confirmMessage = document.createElement('p');
+              confirmMessage.style.color = '#2e7d32';
+              confirmMessage.style.fontWeight = 'bold';
+              confirmMessage.style.marginTop = '20px';
+              confirmMessage.innerText = data.message;
+              form.parentElement.appendChild(confirmMessage);
+              window.scrollTo({ top: 0, behavior: 'instant' });
+            } else {
+              responseText.innerText = data.message;
+            }
+          })
+          .catch(() => {
+            responseText.innerText = "Eroare la trimitere. Încearcă din nou.";
+          });
       });
   });
-</script>
-
-<script>
-  const sections = document.querySelectorAll('.section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  sections.forEach(section => observer.observe(section));
-</script>
-  
-  <script>
-  window.onbeforeunload = () => {
-    window.scrollTo(0, 0);
-  };
 </script>
 
 </body>
