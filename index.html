@@ -198,11 +198,14 @@ html {
       <option value="3">3</option>
       <option value="4+">4+</option>
     </select>
-    <label for="answear">Confirmati prezenta?</label>
-    <select id="answear" name="answear" required>
-      <option value="" disabled selected>Selecteaza</option>
-      <option value="Da">Da</option>
-      <option value="Nu">Nu</option>
+    
+    <label for="attendance">Vei fi prezent(ă)?</label>
+  <select id="attendance" name="attendance" required>
+    <option value="" disabled selected>Selectează</option>
+    <option value="Da">Da</option>
+    <option value="Nu">Nu</option>
+  </select>
+    
     <label for="message">Un mesaj pentru miri (opțional):</label>
     <input type="text" id="message" name="message">
     <input type="hidden" id="ip" name="ip">
@@ -267,12 +270,12 @@ html {
   const lastname = document.getElementById('lastname');
   const firstname = document.getElementById('firstname');
   const guests = document.getElementById('guests');
-  const answear = document.getElementById('answear');
-
+  const attendance = document.getElementById('attendance');
+    
   lastname.classList.remove('error');
   firstname.classList.remove('error');
   guests.classList.remove('error');
-  answear.classList.remove('error');
+  attendance.classList.remove('error');
   responseText.innerText = "";
 
   let valid = true;
