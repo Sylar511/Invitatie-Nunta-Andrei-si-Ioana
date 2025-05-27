@@ -199,12 +199,23 @@ html {
       <option value="4+">4+</option>
     </select>
     
-    <label for="attendance">Vei fi prezent(ă)?</label>
-  <select id="attendance" name="attendance" required>
+<label for="attendance">Vei fi prezent(ă)?</label>
+<select id="attendance" name="attendance" required>
+  <option value="" disabled selected>Selectează</option>
+  <option value="Da">Da</option>
+  <option value="Nu">Nu</option>
+</select>
+
+<div id="guests-wrapper">
+  <label for="guests">Număr persoane:</label>
+  <select id="guests" name="guests">
     <option value="" disabled selected>Selectează</option>
-    <option value="Da">Da</option>
-    <option value="Nu">Nu</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4+">4+</option>
   </select>
+</div>
     
     <label for="message">Un mesaj pentru miri (opțional):</label>
     <input type="text" id="message" name="message">
@@ -262,8 +273,21 @@ html {
         });
     });
 });
+  const guestsWrapper = document.getElementById('guests-wrapper');
+const attendance = document.getElementById('attendance');
+const guests = document.getElementById('guests');
 
+attendance.addEventListener('change', () => {
+  if (attendance.value === "Nu") {
+    guestsWrapper.style.display = "none";
+    guests.value = "";
+    guests.classList.remove('error');
+  } else {
+    guestsWrapper.style.display = "block";
+  }
+});
 
+  
   form.addEventListener('submit', e => {
   e.preventDefault();
 
@@ -271,7 +295,7 @@ html {
   const firstname = document.getElementById('firstname');
   const guests = document.getElementById('guests');
   const attendance = document.getElementById('attendance');
-    
+
   lastname.classList.remove('error');
   firstname.classList.remove('error');
   guests.classList.remove('error');
@@ -287,11 +311,14 @@ html {
     firstname.classList.add('error');
     valid = false;
   }
-  if (!guests.value) {
-    guests.classList.add('error');
-    valid = false;
-  }
-    if (!attendance.value) {
+  if (attendance.value === "Da" && !guests.value) {
+  guests.classList.add('error');
+  valid = false;
+}
+    if (attendance.value === "Nu") {
+  guests.classList.remove('error');
+}
+   if (!attendance.value) {
   attendance.classList.add('error');
   valid = false;
 }
@@ -310,7 +337,9 @@ html {
         responseText.innerText = "Ai trimis deja confirmarea cu acest nume.";
         return;
       }
+      
   const formData = new FormData(form);
+      
       fetch(scriptURL, { method: 'POST', body: new FormData(form) })
         .then(res => res.json())
         .then(data => {
