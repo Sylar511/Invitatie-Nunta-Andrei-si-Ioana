@@ -294,23 +294,21 @@ attendance.addEventListener('change', () => {
   responseText.innerText = "";
 
   let valid = true;
-  if (!lastname.value.trim()) {
-    lastname.classList.add('error');
-    valid = false;
-  }
-  if (!firstname.value.trim()) {
-    firstname.classList.add('error');
-    valid = false;
-  }
-  if (attendance.value === "Da" && !guests.value) {
-  guests.classList.add('error');
+if (!lastname.value.trim()) {
+  lastname.classList.add('error');
   valid = false;
 }
-    if (attendance.value === "Nu") {
-  guests.classList.remove('error');
+if (!firstname.value.trim()) {
+  firstname.classList.add('error');
+  valid = false;
 }
-   if (!attendance.value) {
+if (!attendance.value) {
   attendance.classList.add('error');
+  valid = false;
+}
+
+if (attendance.value === "Da" && !guests.value) {
+  guests.classList.add('error');
   valid = false;
 }
 
