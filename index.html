@@ -385,5 +385,41 @@ form button {
   };
 </script>
 
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const targetDate = new Date('2025-10-11T00:00:00');
+    const daysSpan = document.getElementById('days');
+    const hoursSpan = document.getElementById('hours');
+    const minutesSpan = document.getElementById('minutes');
+    const secondsSpan = document.getElementById('seconds');
+
+    function updateCountdown() {
+      const now = new Date();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        daysSpan.textContent = '0';
+        hoursSpan.textContent = '0';
+        minutesSpan.textContent = '0';
+        secondsSpan.textContent = '0';
+        return;
+      }
+
+      const seconds = Math.floor((difference / 1000) % 60);
+      const minutes = Math.floor((difference / 1000 / 60) % 60);
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+      daysSpan.textContent = days;
+      hoursSpan.textContent = hours;
+      minutesSpan.textContent = minutes;
+      secondsSpan.textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  });
+</script>
+
 </body>
 </html>
