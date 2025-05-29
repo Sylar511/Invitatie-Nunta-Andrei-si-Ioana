@@ -4,143 +4,123 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ioana & Andrei - Nuntă</title>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Open+Sans&display=swap" rel="stylesheet">
+  
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       font-family: 'Open Sans', sans-serif;
-      background: url('https://images.unsplash.com/photo-1520509414578-d9cbf09933a1') no-repeat center center fixed;
+      scroll-behavior: smooth;
+    }
+
+   
+    body {
+      background: url('https://raw.githubusercontent.com/Sylar511/Invitatie-Nunta-Andrei-si-Ioana/refs/heads/main/wedding-stage-decoration-background.jpeg') no-repeat center center fixed;
       background-size: cover;
-      color: #4e342e;
+      color: #5d4037;
     }
-
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(255,255,255,0.95);
-      padding: 20px 0;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: padding 0.3s ease;
-      z-index: 1000;
-    }
-
+    /* Header elegant cu tranziții */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 20px 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: all 0.4s ease;
+}
     header.scrolled {
-      padding: 10px 0;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-    }
+  padding: 10px 0;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
+header nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
 
-    nav a {
-      text-decoration: none;
-      color: #b71c1c;
-      font-weight: 600;
-      font-size: 1.1em;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: background-color 0.3s;
-    }
+header a {
+  text-decoration: none;
+  color: #b71c1c;
+  font-weight: 600;
+  font-size: 1.1em;
+  letter-spacing: 0.05em;
+  padding: 5px 10px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
 
-    nav a:hover {
-      background-color: #ffe3e3;
-    }
+header a:hover {
+  background-color: #ffe3e3;
+  border-radius: 8px;
+  color: #7f0f0f;
+}
 
-    .section {
-      padding: 100px 20px 60px;
-      max-width: 900px;
-      margin: 0 auto;
-      background-color: rgba(255,255,255,0.92);
-      border-radius: 16px;
-      margin-top: 80px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 1s, transform 1s;
-    }
+/* Titlu principal romantic */
+h1 {
+  font-family: 'Alex Brush', cursive;
+  font-size: 4em;
+  color: #b71c1c;
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-bottom: 0;
+}
 
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* Subtitlu data eveniment */
+h2 {
+  font-size: 2em;
+  font-weight: 400;
+  text-align: center;
+  color: #5d4037;
+  margin-top: 0.2em;
+  margin-bottom: 1em;
+}
 
-    h1 {
-      font-family: 'Alex Brush', cursive;
-      font-size: 4em;
-      color: #b71c1c;
-      text-align: center;
-      margin: 0;
-    }
+/* Fade & Slide elegant */
+.section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
 
-    h2 {
-      font-size: 2em;
-      text-align: center;
-      color: #6d4c41;
-    }
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
+/* Buton animat */
+button {
+  background-color: #b71c1c;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-    .count-box {
-      background: #fff7f6;
-      border: 2px solid #b71c1c;
-      padding: 16px;
-      border-radius: 10px;
-      min-width: 80px;
-      text-align: center;
-      font-weight: bold;
-      color: #b71c1c;
-      font-size: 1.5em;
-    }
+button:hover {
+  background-color: #8e1010;
+  transform: scale(1.03);
+}
 
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
+/* Count-box elegant */
+.count-box {
+  background-color: #fffaf9;
+  border: 2px solid #b71c1c;
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 90px;
+  text-align: center;
+  color: #b71c1c;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.08);
+}
 
-    form {
-      margin-top: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    form input, form select, form button {
-      padding: 12px;
-      font-size: 1em;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      width: 100%;
-    }
-
-    form button {
-      background-color: #b71c1c;
-      color: white;
-      font-weight: bold;
-      border: none;
-      transition: background-color 0.3s;
-    }
-
-    form button:hover {
-      background-color: #7f0f0f;
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2.8em; }
-      h2 { font-size: 1.5em; }
-    }
   </style>
 </head>
 <body>
@@ -151,18 +131,18 @@
     <a href="#countdown">Countdown</a>
     <a href="#ceremony">Cununia</a>
     <a href="#party">Petrecerea</a>
-    <a href="#rsvp">RSVP</a>
+    <a href="#rsvp">Confirmare</a>
   </nav>
 </header>
 
 <section class="section" id="intro">
   <h1>Ioana & Andrei</h1>
   <h2>11 octombrie 2025</h2>
-  <p style="text-align:center">Cu emoție și iubire, vă invităm să ne fiți alături în ziua nunții noastre.</p>
+  <p>Cu bucurie vă invităm să fiți alături de noi în cea mai specială zi a noastră.</p>
 </section>
 
 <section class="section" id="countdown">
-  <h2>Numărătoare inversă</h2>
+  <h2>Numărătoarea inversă</h2>
   <div class="countdown">
     <div class="count-box"><span id="days">--</span><div>zile</div></div>
     <div class="count-box"><span id="hours">--</span><div>ore</div></div>
@@ -171,60 +151,228 @@
   </div>
 </section>
 
-<section class="section" id="ceremony">
-  <h2>Cununia religioasă</h2>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d289.16051548333917!2d26.08676277829782!3d44.440675237760864" allowfullscreen loading="lazy"></iframe>
+  <section class="section" id="ceremony">
+  <h2>Cununia religioasă - Biserica Popa Tatu</h2>
+  <div class="map-wrapper">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d289.16051548333917!2d26.08676277829782!3d44.440675237760864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff5a4c5b1e49%3A0xe03b21eb9cd4eaf6!2sBiserica%20Popa%20Tatu!5e1!3m2!1sro!2sro!4v1748279558822!5m2!1sro!2sro" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
 </section>
 
 <section class="section" id="party">
-  <h2>Petrecerea</h2>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d817.5198606859321!2d26.1238138696486!3d44.46564269819216" allowfullscreen loading="lazy"></iframe>
+  <h2>Petrecerea - The President</h2>
+  <div class="map-wrapper">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d817.5198606859321!2d26.1238138696486!3d44.46564269819216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f8967f3e0fad%3A0x7896d7255ac6189c!2sRestaurant%20The%20President!5e1!3m2!1sro!2sro!4v1748279650462!5m2!1sro!2sro" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
 </section>
+
 
 <section class="section" id="rsvp">
   <h2>Confirmă prezența</h2>
-  <form>
-    <input type="text" placeholder="Nume" required>
-    <input type="text" placeholder="Prenume" required>
-    <select required>
-      <option value="">Vei fi prezent(ă)?</option>
+  <form id="rsvp-form" name="rsvp">
+    <label for="lastname">Nume:</label>
+    <input type="text" id="lastname" name="lastname" required>
+
+    <label for="firstname">Prenume:</label>
+    <input type="text" id="firstname" name="firstname" required>
+
+    <label for="attendance">Vei fi prezent(ă)?</label>
+    <select id="attendance" name="attendance" required>
+      <option value="" disabled selected>Selectează</option>
       <option value="Da">Da</option>
       <option value="Nu">Nu</option>
     </select>
-    <input type="text" placeholder="Mesaj pentru miri (opțional)">
-    <button type="submit">Trimite</button>
+
+    <div id="guests-wrapper" style="display: none;">
+      <label for="guests">Număr persoane:</label>
+      <select id="guests" name="guests">
+        <option value="" disabled selected>Selectează</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4+">4+</option>
+      </select>
+    </div>
+
+    <label for="message">Un mesaj pentru miri (opțional):</label>
+    <input type="text" id="message" name="message">
+
+    <input type="hidden" id="ip" name="ip">
+    <button type="submit">Trimite confirmarea</button>
+    <p id="form-response"></p>
   </form>
 </section>
 
 <script>
-  // Sticky header on scroll
-  window.addEventListener('scroll', () => {
-    document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50);
-  });
+  document.addEventListener('DOMContentLoaded', () => {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbweBzjk8BY_LNRk9V-2TrzEo2s1-HZ_p1tBXhQnHlT9CNP2rB6rk1YPABOYolNXWVGJgA/exec';
+    const form = document.getElementById('rsvp-form');
+    const responseText = document.getElementById('form-response');
+    const lastname = document.getElementById('lastname');
+    const firstname = document.getElementById('firstname');
+    const guests = document.getElementById('guests');
+    const attendance = document.getElementById('attendance');
+    const guestsWrapper = document.getElementById('guests-wrapper');
+    const ipField = document.getElementById('ip');
 
-  // Countdown Timer
-  const target = new Date("2025-10-11T00:00:00").getTime();
-  const update = () => {
-    const now = new Date().getTime();
-    const diff = target - now;
-    if (diff <= 0) return;
-    document.getElementById('days').textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
-    document.getElementById('hours').textContent = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    document.getElementById('minutes').textContent = Math.floor((diff / (1000 * 60)) % 60);
-    document.getElementById('seconds').textContent = Math.floor((diff / 1000) % 60);
-  };
-  update();
-  setInterval(update, 1000);
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        ipField.value = data.ip;
 
-  // Reveal on scroll
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
+        const fullName = `${lastname.value.trim()} ${firstname.value.trim()}`.toLowerCase();
+        fetch(`${scriptURL}?name=${encodeURIComponent(fullName)}`)
+          .then(res => res.json())
+          .then(info => {
+            if (info.exists) {
+              localStorage.setItem('rsvpConfirmed', 'true');
+              form.style.display = 'none';
+              const msg = document.createElement('p');
+              msg.innerText = "Ai trimis deja confirmarea. Îți mulțumim!";
+              msg.style.color = '#2e7d32';
+              msg.style.fontWeight = 'bold';
+              form.parentElement.appendChild(msg);
+            }
+          });
+      });
+
+    attendance.addEventListener('change', () => {
+      if (attendance.value === "Da") {
+        guestsWrapper.style.display = "block";
+      } else {
+        guestsWrapper.style.display = "none";
+        guests.value = "";
+        guests.classList.remove('error');
+      }
     });
-  }, { threshold: 0.1 });
 
-  document.querySelectorAll('.section').forEach(sec => observer.observe(sec));
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      lastname.classList.remove('error');
+      firstname.classList.remove('error');
+      guests.classList.remove('error');
+      attendance.classList.remove('error');
+      responseText.innerText = "";
+
+      let valid = true;
+
+      if (!lastname.value.trim()) {
+        lastname.classList.add('error');
+        valid = false;
+      }
+      if (!firstname.value.trim()) {
+        firstname.classList.add('error');
+        valid = false;
+      }
+      if (!attendance.value) {
+        attendance.classList.add('error');
+        valid = false;
+      }
+      if (attendance.value === "Da" && !guests.value) {
+        guests.classList.add('error');
+        valid = false;
+      }
+
+      if (!valid) {
+        responseText.innerText = "Te rugăm să completezi câmpurile obligatorii.";
+        return;
+      }
+
+      const formData = new FormData(form);
+      fetch(scriptURL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          localStorage.setItem('rsvpConfirmed', 'true');
+          form.reset();
+          form.style.display = 'none';
+          const msg = document.createElement('p');
+          msg.innerText = data.message;
+          msg.style.color = '#2e7d32';
+          msg.style.fontWeight = 'bold';
+          form.parentElement.appendChild(msg);
+          window.scrollTo({ top: 0, behavior: 'instant' });
+        } else {
+          responseText.innerText = data.message;
+        }
+      })
+      .catch(() => {
+        responseText.innerText = "Eroare la trimitere. Încearcă din nou.";
+      });
+    });
+  });
 </script>
 
+<script>
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  sections.forEach(section => observer.observe(section));
+</script>
+  
+  <script>
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+});
+</script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const targetDate = new Date('2025-10-11T00:00:00');
+    const daysSpan = document.getElementById('days');
+    const hoursSpan = document.getElementById('hours');
+    const minutesSpan = document.getElementById('minutes');
+    const secondsSpan = document.getElementById('seconds');
+
+    function updateCountdown() {
+      const now = new Date();
+      const difference = targetDate - now;
+
+      if (difference <= 0) {
+        daysSpan.textContent = '0';
+        hoursSpan.textContent = '0';
+        minutesSpan.textContent = '0';
+        secondsSpan.textContent = '0';
+        return;
+      }
+
+      const seconds = Math.floor((difference / 1000) % 60);
+      const minutes = Math.floor((difference / 1000 / 60) % 60);
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+
+      daysSpan.textContent = days;
+      hoursSpan.textContent = hours;
+      minutesSpan.textContent = minutes;
+      secondsSpan.textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  });
+</script>
+
+ <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  });
+</script>
+    
 </body>
 </html>
