@@ -3,443 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ioana & Andrei - Nuntă</title>
-<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Open+Sans&display=swap" rel="stylesheet">
-  
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Open Sans', sans-serif;
-      scroll-behavior: smooth;
-    }
-    body {
-      background: url('https://raw.githubusercontent.com/Sylar511/Invitatie-Nunta-Andrei-si-Ioana/refs/heads/main/wedding-stage-decoration-background.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      color: #5d4037;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 10px 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    header nav {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
-    header a {
-      text-decoration: none;
-      color: #b71c1c;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .section {
-      padding: 100px 20px 50px;
-      max-width: 900px;
-      margin: auto;
-      background-color: rgba(255, 255, 255, 0.85);
-      border-radius: 12px;
-      margin-top: 70px;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    h1 {
-  font-family: 'Alex Brush', cursive;
-  font-size: 4em;
-  color: #b71c1c;
-}
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin: 30px 0;
-      font-weight: bold;
-      font-size: 1.8em;
-    }
-    .count-box {
-      background-color: #fff3f0;
-      border: 2px solid #b71c1c;
-      border-radius: 10px;
-      padding: 15px 20px;
-      min-width: 80px;
-      text-align: center;
-      color: #b71c1c;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-    }
-    iframe {
-      width: 100%;
-      max-width: 600px;
-      height: 300px;
-      border: none;
-      border-radius: 10px;
-      margin: 20px 0;
-    }
-    form {
-      margin-top: 30px;
-      text-align: left;
-    }
-    label, input, select, button {
-      display: block;
-      width: 100%;
-      margin-bottom: 15px;
-      font-size: 1em;
-    }
-    input, select {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    input.error, select.error {
-      border-color: red;
-      background-color: #ffe5e5;
-    }
-    button {
-      background-color: #b71c1c;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #8e1010;
-    }
-    #form-response {
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    @media (max-width: 768px) {
-  h1 {
-    font-size: 2.5em;
-  }
-  .countdown {
-    flex-direction: column;
-    align-items: center;
-  }
-  iframe {
-    height: 200px;
-  }
-  form label, form input, form select, form button {
-    font-size: 0.95em;
-  }
-  header nav {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-html {
-  scroll-padding-top: 70px;
-}
-
-    form {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
-
-form input[type="text"],
-form select,
-form button {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-form input[type="text"],
-form select {
-  padding: 12px;
-  font-size: 1rem;
-}
-
-form button {
-  font-size: 1rem;
-  padding: 12px;
-}
-
-@media (max-width: 768px) {
-  form {
-    padding: 0 15px;
-  }
-
-  form input[type="text"],
-  form select,
-  form button {
-    font-size: 1rem;
-    padding: 14px;
-  }
-
-  h2 {
-    font-size: 1.6em;
-    text-align: center;
-  }
-}
-  
-    .map-wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.map-wrapper iframe {
-  width: 100%;
-  max-width: 600px;
-  height: 300px;
-  border: none;
-  border-radius: 10px;
-}
-  
-  </style>
+  <title>Invitație Nuntă Ioana & Andrei</title>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <nav>
-    <a href="#intro">Acasă</a>
-    <a href="#countdown">Countdown</a>
-    <a href="#ceremony">Cununia</a>
-    <a href="#party">Petrecerea</a>
-    <a href="#rsvp">Confirmare</a>
-  </nav>
-</header>
+  <header>
+    <nav>
+      <a href="#intro">Acasă</a>
+      <a href="#countdown">Numărătoare inversă</a>
+      <a href="#soul-people">Oamenii de suflet</a>	
+      <a href="#ceremony">Cununia</a>
+      <a href="#party">Petrecerea</a>
+      <a href="#rsvp">Confirmare</a>
+    </nav>
+  </header>
 
-<section class="section" id="intro">
-  <h1>Ioana & Andrei</h1>
-  <h2>11 octombrie 2025</h2>
-  <p>Cu bucurie vă invităm să fiți alături de noi în cea mai specială zi a noastră.</p>
-</section>
+  <section class="section" id="intro">
+    <h1>Ioana & Andrei</h1>
+    <h2>11 octombrie 2025</h2>
+    <p class="intro-text">Cu bucurie vă invităm să fiți alături de noi în cea mai specială zi a noastră.</p>
+  </section>
 
-<section class="section" id="countdown">
-  <h2>Numărătoarea inversă</h2>
-  <div class="countdown">
-    <div class="count-box"><span id="days">--</span><div>zile</div></div>
-    <div class="count-box"><span id="hours">--</span><div>ore</div></div>
-    <div class="count-box"><span id="minutes">--</span><div>minute</div></div>
-    <div class="count-box"><span id="seconds">--</span><div>secunde</div></div>
-  </div>
-</section>
+  <section class="section" id="countdown">
+    <h2>Numărătoarea inversă</h2>
+    <div class="countdown">
+      <div class="count-box"><span id="days">--</span><div>zile</div></div>
+      <div class="count-box"><span id="hours">--</span><div>ore</div></div>
+      <div class="count-box"><span id="minutes">--</span><div>minute</div></div>
+      <div class="count-box"><span id="seconds">--</span><div>secunde</div></div>
+    </div>
+  </section>  
 
-  <section class="section" id="ceremony">
-  <h2>Cununia religioasă - Biserica Popa Tatu</h2>
-  <div class="map-wrapper">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d289.16051548333917!2d26.08676277829782!3d44.440675237760864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff5a4c5b1e49%3A0xe03b21eb9cd4eaf6!2sBiserica%20Popa%20Tatu!5e1!3m2!1sro!2sro!4v1748279558822!5m2!1sro!2sro" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-</section>
+  <section class="section" id="soul-people">
+    <h2>Oamenii de suflet</h2>
+    <p style="margin-top: -10px;">Alături de care vom scrie povestea noastră.</p>
 
-<section class="section" id="party">
-  <h2>Petrecerea - The President</h2>
-  <div class="map-wrapper">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d817.5198606859321!2d26.1238138696486!3d44.46564269819216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f8967f3e0fad%3A0x7896d7255ac6189c!2sRestaurant%20The%20President!5e1!3m2!1sro!2sro!4v1748279650462!5m2!1sro!2sro" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-</section>
-
-
-<section class="section" id="rsvp">
-  <h2>Confirmă prezența</h2>
-  <form id="rsvp-form" name="rsvp">
-    <label for="lastname">Nume:</label>
-    <input type="text" id="lastname" name="lastname" required>
-
-    <label for="firstname">Prenume:</label>
-    <input type="text" id="firstname" name="firstname" required>
-
-    <label for="attendance">Vei fi prezent(ă)?</label>
-    <select id="attendance" name="attendance" required>
-      <option value="" disabled selected>Selectează</option>
-      <option value="Da">Da</option>
-      <option value="Nu">Nu</option>
-    </select>
-
-    <div id="guests-wrapper" style="display: none;">
-      <label for="guests">Număr persoane:</label>
-      <select id="guests" name="guests">
-        <option value="" disabled selected>Selectează</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4+">4+</option>
-      </select>
+    <div class="soul-group">
+      <div class="soul-icon">❤️</div>
+      <h3>Nașii</h3>
+      <p>Andreea și Claudiu</p>
     </div>
 
-    <label for="message">Un mesaj pentru miri (opțional):</label>
-    <input type="text" id="message" name="message">
+    <div class="soul-group">
+      <div class="soul-icon">❤️</div>
+      <h3>Părinții</h3>
+      <p>Elena și Alexandru Dumitru & Mihaela Bujor</p>
+    </div>
+  </section>
 
-    <input type="hidden" id="ip" name="ip">
-    <button type="submit">Trimite confirmarea</button>
-    <p id="form-response"></p>
-  </form>
-</section>
+  <section class="section" id="ceremony">
+    <h2>Cununia religioasă - Biserica Popa Tatu</h2>
+    <div class="map-wrapper">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d299.4250233794347!2d26.086659312294238!3d44.440814067445764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff5a4c5b1e49%3A0xe03b21eb9cd4eaf6!2sBiserica%20Popa%20Tatu!5e0!3m2!1sro!2sro!4v1748620938079!5m2!1sro!2sro" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbweBzjk8BY_LNRk9V-2TrzEo2s1-HZ_p1tBXhQnHlT9CNP2rB6rk1YPABOYolNXWVGJgA/exec';
-    const form = document.getElementById('rsvp-form');
-    const responseText = document.getElementById('form-response');
-    const lastname = document.getElementById('lastname');
-    const firstname = document.getElementById('firstname');
-    const guests = document.getElementById('guests');
-    const attendance = document.getElementById('attendance');
-    const guestsWrapper = document.getElementById('guests-wrapper');
-    const ipField = document.getElementById('ip');
+  <section class="section" id="party">
+    <h2>Petrecerea - The President</h2>
+    <div class="map-wrapper">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1006.7100030606263!2d26.124418240552583!3d44.465852503978546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f8967f3e0fad%3A0x7896d7255ac6189c!2sRestaurant%20The%20President!5e0!3m2!1sro!2sro!4v1748621108731!5m2!1sro!2sro" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
 
-    fetch('https://api.ipify.org?format=json')
-      .then(res => res.json())
-      .then(data => {
-        ipField.value = data.ip;
+  <section class="section" id="rsvp">
+    <h2>Confirmă prezența</h2>
+    <form id="rsvp-form" name="rsvp">
+      <label for="lastname">Nume:</label>
+      <input type="text" id="lastname" name="lastname" required>
 
-        const fullName = `${lastname.value.trim()} ${firstname.value.trim()}`.toLowerCase();
-        fetch(`${scriptURL}?name=${encodeURIComponent(fullName)}`)
-          .then(res => res.json())
-          .then(info => {
-            if (info.exists) {
-              localStorage.setItem('rsvpConfirmed', 'true');
-              form.style.display = 'none';
-              const msg = document.createElement('p');
-              msg.innerText = "Ai trimis deja confirmarea. Îți mulțumim!";
-              msg.style.color = '#2e7d32';
-              msg.style.fontWeight = 'bold';
-              form.parentElement.appendChild(msg);
-            }
-          });
-      });
+      <label for="firstname">Prenume:</label>
+      <input type="text" id="firstname" name="firstname" required>
 
-    attendance.addEventListener('change', () => {
-      if (attendance.value === "Da") {
-        guestsWrapper.style.display = "block";
-      } else {
-        guestsWrapper.style.display = "none";
-        guests.value = "";
-        guests.classList.remove('error');
-      }
-    });
+      <label for="attendance">Vei fi prezent(ă)?</label>
+      <select id="attendance" name="attendance" required>
+        <option value="" disabled selected>Selectează</option>
+        <option value="Da">Da</option>
+        <option value="Nu">Nu</option>
+      </select>
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
+      <div id="guests-wrapper" style="display: none;">
+        <label for="guests">Număr persoane:</label>
+        <select id="guests" name="guests">
+          <option value="" disabled selected>Selectează</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4+">4+</option>
+        </select>
+      </div>
 
-      lastname.classList.remove('error');
-      firstname.classList.remove('error');
-      guests.classList.remove('error');
-      attendance.classList.remove('error');
-      responseText.innerText = "";
+      <label for="message">Un mesaj pentru miri (opțional):</label>
+      <input type="text" id="message" name="message">
 
-      let valid = true;
+      <input type="hidden" id="ip" name="ip">
+      <button type="submit">Trimite confirmarea</button>
+      <p id="form-response"></p>
+    </form>
+  </section>
 
-      if (!lastname.value.trim()) {
-        lastname.classList.add('error');
-        valid = false;
-      }
-      if (!firstname.value.trim()) {
-        firstname.classList.add('error');
-        valid = false;
-      }
-      if (!attendance.value) {
-        attendance.classList.add('error');
-        valid = false;
-      }
-      if (attendance.value === "Da" && !guests.value) {
-        guests.classList.add('error');
-        valid = false;
-      }
-
-      if (!valid) {
-        responseText.innerText = "Te rugăm să completezi câmpurile obligatorii.";
-        return;
-      }
-
-      const formData = new FormData(form);
-      fetch(scriptURL, {
-        method: 'POST',
-        body: formData
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          localStorage.setItem('rsvpConfirmed', 'true');
-          form.reset();
-          form.style.display = 'none';
-          const msg = document.createElement('p');
-          msg.innerText = data.message;
-          msg.style.color = '#2e7d32';
-          msg.style.fontWeight = 'bold';
-          form.parentElement.appendChild(msg);
-          window.scrollTo({ top: 0, behavior: 'instant' });
-        } else {
-          responseText.innerText = data.message;
-        }
-      })
-      .catch(() => {
-        responseText.innerText = "Eroare la trimitere. Încearcă din nou.";
-      });
-    });
-  });
-</script>
-
-<script>
-  const sections = document.querySelectorAll('.section');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  sections.forEach(section => observer.observe(section));
-</script>
-  
-  <script>
-window.addEventListener('load', () => {
-  window.scrollTo(0, 0);
-});
-</script>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const targetDate = new Date('2025-10-11T00:00:00');
-    const daysSpan = document.getElementById('days');
-    const hoursSpan = document.getElementById('hours');
-    const minutesSpan = document.getElementById('minutes');
-    const secondsSpan = document.getElementById('seconds');
-
-    function updateCountdown() {
-      const now = new Date();
-      const difference = targetDate - now;
-
-      if (difference <= 0) {
-        daysSpan.textContent = '0';
-        hoursSpan.textContent = '0';
-        minutesSpan.textContent = '0';
-        secondsSpan.textContent = '0';
-        return;
-      }
-
-      const seconds = Math.floor((difference / 1000) % 60);
-      const minutes = Math.floor((difference / 1000 / 60) % 60);
-      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-
-      daysSpan.textContent = days;
-      hoursSpan.textContent = hours;
-      minutesSpan.textContent = minutes;
-      secondsSpan.textContent = seconds;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  });
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
