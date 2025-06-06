@@ -20,6 +20,15 @@ header {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* Linkuri */
+header a {
+  text-decoration: none;
+  color: #b71c1c;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 8px 16px;
+}
+
 /* Buton ☰ */
 .mobile-nav-toggle {
   display: none;
@@ -30,13 +39,6 @@ header {
   top: 15px;
   cursor: pointer;
   z-index: 1100;
-}
-
-header a {
-  text-decoration: none;
-  color: #b71c1c;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 /* Secțiuni */
@@ -88,7 +90,7 @@ header a {
 .map-container {
   width: 100%;
   position: relative;
-  padding-bottom: 56.25%; /* raport 16:9 */
+  padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
   border-radius: 12px;
@@ -105,7 +107,6 @@ header a {
   border: 0;
 }
 
-/* Titlu principal */
 h1 {
   font-family: 'Alex Brush', cursive;
   font-size: 4em;
@@ -113,7 +114,6 @@ h1 {
   text-align: center;
 }
 
-/* Numărătoare inversă */
 .countdown {
   display: flex;
   justify-content: center;
@@ -135,8 +135,6 @@ h1 {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-::contentReference[oaicite:0]{index=0}
- 
 #soul-people {
   display: flex;
   flex-direction: column;
@@ -148,7 +146,6 @@ h1 {
   margin-left: auto;
   margin-right: auto;
 }
-
 
 #soul-people h2 {
   font-size: 2.5em;
@@ -183,8 +180,8 @@ h1 {
 }
 
 @keyframes pulse {
-  0%   { transform: scale(1); opacity: 0.8; }
-  50%  { transform: scale(1.2); opacity: 1; }
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
   100% { transform: scale(1); opacity: 0.8; }
 }
 
@@ -236,44 +233,6 @@ h1 {
   .countdown {
     flex-direction: column;
     align-items: center;
-  }
-
-  h1 {
-    font-size: 2.5em;
-  }
-
-  form label,
-  form input,
-  form select,
-  form button {
-    font-size: 1em;
-  }
-
-    .section {
-    padding: 40px 20px;
-    margin: 70px 10px;
-  }
-
-  #soul-people h2 {
-    font-size: 2em;
-  }
-
-  .soul-icon {
-    font-size: 2.5em;
-  }
-
-  iframe {
-    height: 200px;
-  }
-
-  .countdown {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  header nav {
-    flex-direction: column;
-    gap: 10px;
   }
 
   h1 {
