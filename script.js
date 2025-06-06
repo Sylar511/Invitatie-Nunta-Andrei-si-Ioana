@@ -10,26 +10,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const guestsWrapper = document.getElementById('guests-wrapper');
   const ipField = document.getElementById('ip');
 
-  // Obține IP-ul utilizatorului
+  // Obține IP-ul utilizatorului și verifică dacă a completat deja
   fetch('https://api.ipify.org?format=json')
     .then(res => res.json())
     .then(data => {
       ipField.value = data.ip;
 
       const fullName = `${lastname.value.trim()} ${firstname.value.trim()}`.toLowerCase();
-      fetch(`${scriptURL}?name=${encodeURIComponent(fullName)}`)
-        .then(res => res.json())
-        .then(info => {
-          if (info.exists) {
-            localStorage.setItem('rsvpConfirmed', 'true');
-            form.style.display = 'none';
-            const msg = document.createElement('p');
-            msg.innerText = "Ai trimis deja confirmarea. Îți mulțumim!";
-            msg.style.color = '#2e7d32';
-            msg.style.fontWeight = 'bold';
-            form.parentElement.appendChild(msg);
-          }
-        });
+      if (fullName.trim()) {
+        fetch(`${scriptURL}?name=${encodeURIComponent(fullName)}`)
+          .then(res => res.json())
+          .then(info => {
+            if (info.exists) {
+              localStorage.setItem('rsvpConfirmed', 'true');
+              form.style.display = 'none';
+              const msg = document.createElement('p');
+              msg.innerText = "Ai trimis deja confirmarea. Îți mulțumim!";
+              msg.style.color = '#2e7d32';
+              msg.style.fontWeight = 'bold';
+              form.parentElement.appendChild(msg);
+            }
+          });
+      }
     });
 
   // Afișează selectorul de persoane dacă este selectat "Da"
@@ -121,7 +123,7 @@ window.addEventListener('load', () => {
 });
 
 // Countdown timer
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
   const targetDate = new Date('2025-10-11T00:00:00');
   const daysSpan = document.getElementById('days');
   const hoursSpan = document.getElementById('hours');
@@ -155,7 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 });
 
-/*<script>
+// Meniu mobil
+window.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById("navToggle");
   const nav = document.getElementById("mainNav");
 
@@ -168,4 +171,4 @@ document.addEventListener('DOMContentLoaded', () => {
       nav.classList.remove("active");
     });
   });
-</script>
+});
