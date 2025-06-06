@@ -236,34 +236,34 @@ h1 {
 }
 
 @media (max-width: 768px) {
+  header {
+    position: relative;
+    padding: 10px 0;
+  }
+
   .mobile-nav-toggle {
     display: block;
   }
 
-header nav {
-  flex-direction: column;
-  gap: 10px;
-  height: 0;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.95);
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  padding: 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  opacity: 0;
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
+  header nav {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
 
   header nav.active {
-  height: auto;
-  opacity: 1;
-  padding: 10px 0;
-  pointer-events: auto;
+    display: flex;
+  }
 }
-}
+
 
 #backToTop {
   position: fixed;
