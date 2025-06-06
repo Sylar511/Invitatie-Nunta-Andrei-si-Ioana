@@ -46,6 +46,11 @@ header a {
   transform: translateY(50px);
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
+.centered-content {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .section > * {
   max-width: 800px;
