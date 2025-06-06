@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 });
 
-<script>
+/*<script>
   const toggle = document.getElementById("navToggle");
   const nav = document.getElementById("mainNav");
 
@@ -163,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.classList.toggle("active");
   });
 
-  // Opțional: închide meniul la click pe un link
   document.querySelectorAll("#mainNav a").forEach(link => {
     link.addEventListener("click", () => {
       nav.classList.remove("active");
