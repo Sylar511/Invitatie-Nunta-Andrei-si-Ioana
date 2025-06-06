@@ -10,15 +10,16 @@
 <body>
 
   <header>
-    <nav>
-      <a href="#intro">Acasă</a>
-      <a href="#countdown">Numărătoare inversă</a>
-      <a href="#soul-people">Oamenii de suflet</a>	
-      <a href="#ceremony">Cununia</a>
-      <a href="#party">Petrecerea</a>
-      <a href="#rsvp">Confirmare</a>
-    </nav>
-  </header>
+  <div class="mobile-nav-toggle" id="navToggle">☰</div>
+  <nav id="mainNav">
+    <a href="#intro">Acasă</a>
+    <a href="#countdown">Numărătoare inversă</a>
+    <a href="#soul-people">Oamenii de suflet</a>	
+    <a href="#ceremony">Cununia</a>
+    <a href="#party">Petrecerea</a>
+    <a href="#rsvp">Confirmare</a>
+  </nav>
+</header>
 
   <section class="section centered-content" id="intro">
     <h1>Ioana & Andrei</h1>
@@ -127,6 +128,15 @@
 
   backToTopBtn.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
+  <script>
+  const toggle = document.getElementById("navToggle");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
   });
 </script>
 
