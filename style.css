@@ -32,31 +32,6 @@ header {
   z-index: 1100;
 }
 
-/* Meniu mobil ascuns inițial */
-@media (max-width: 768px) {
-  .mobile-nav-toggle {
-    display: block;
-  }
-
-  header nav {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.95);
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-
-  header nav.active {
-    display: flex;
-  }
-}
-
 header a {
   text-decoration: none;
   color: #b71c1c;
@@ -214,7 +189,67 @@ h1 {
 }
 
 @media (max-width: 768px) {
+  header {
+    position: relative;
+    padding: 10px 0;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  header nav {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  header nav.active {
+    display: flex;
+  }
+
   .section {
+    padding: 40px 20px;
+    margin: 70px 10px;
+  }
+
+  #soul-people h2 {
+    font-size: 2em;
+  }
+
+  .soul-icon {
+    font-size: 2.5em;
+  }
+
+  iframe {
+    height: 200px;
+  }
+
+  .countdown {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  form label,
+  form input,
+  form select,
+  form button {
+    font-size: 1em;
+  }
+
+    .section {
     padding: 40px 20px;
     margin: 70px 10px;
   }
@@ -252,36 +287,6 @@ h1 {
     font-size: 1em;
   }
 }
-
-@media (max-width: 768px) {
-  header {
-    position: relative;
-    padding: 10px 0;
-  }
-
-  .mobile-nav-toggle {
-    display: block;
-  }
-
-  header nav {
-    display: none;
-    flex-direction: column;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.95);
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-
-  header nav.active {
-    display: flex;
-  }
-}
-
 
 #backToTop {
   position: fixed;
