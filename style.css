@@ -24,6 +24,19 @@ header nav {
   display: flex;
   justify-content: center;
   gap: 30px;
+  transition: max-height 0.4s ease;
+}
+
+/* Buton hamburger */
+.mobile-nav-toggle {
+  display: none;
+  font-size: 2em;
+  color: #b71c1c;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  cursor: pointer;
+  z-index: 1100;
 }
 
 header a {
@@ -222,6 +235,29 @@ h1 {
   }
 }
 
+@media (max-width: 768px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  header nav {
+    flex-direction: column;
+    gap: 10px;
+    max-height: 0;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  header nav.active {
+    max-height: 300px;
+  }
+}
 
 #backToTop {
   position: fixed;
