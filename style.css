@@ -35,15 +35,23 @@ header a {
 
 /* Secțiuni */
 .section {
-  padding: 100px 20px 50px;
-  max-width: 900px;
-  margin: auto;
+  width: 100%;
+  max-width: 1000px;
+  margin: 100px auto 50px;
+  padding: 60px 40px;
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 12px;
-  margin-top: 70px;
+  box-sizing: border-box;
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.section > * {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .section.visible {
@@ -93,6 +101,123 @@ h1 {
   min-width: 80px;
   text-align: center;
   color: #b71c1c;
-  box-shadow: 2
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
 ::contentReference[oaicite:0]{index=0}
  
+#soul-people {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px 50px;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#soul-people h2 {
+  font-size: 2.5em;
+  color: #5d4037;
+  margin-bottom: 10px;
+}
+
+#soul-people p {
+  font-size: 1.1em;
+  color: #4e342e;
+}
+
+.soul-group {
+  margin: 40px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.soul-group h3,
+.soul-group p {
+  text-align: center;
+  width: 100%;
+}
+
+.soul-icon {
+  font-size: 3em;
+  color: #e53935;
+  margin-bottom: 10px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); opacity: 0.8; }
+  50%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 40px 20px;
+    margin: 70px 10px;
+  }
+
+  #soul-people h2 {
+    font-size: 2em;
+  }
+
+  .soul-icon {
+    font-size: 2.5em;
+  }
+
+  iframe {
+    height: 200px;
+  }
+
+  .countdown {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  form label,
+  form input,
+  form select,
+  form button {
+    font-size: 1em;
+  }
+}
+
+
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  background-color: #b71c1c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5em;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
