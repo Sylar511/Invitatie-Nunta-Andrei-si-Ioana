@@ -1,18 +1,19 @@
 // RSVP form logic
-// Fade out header on scroll
-let lastScrollTop = 0;
-window.addEventListener('scroll', () => {
-  const header = document.querySelector('header');
-  const scrollTop = window.scrollY || document.documentElement.scrollTop;
-  if (scrollTop > lastScrollTop && scrollTop > 100) {
-    header.style.opacity = '0';
-  } else {
-    header.style.opacity = '1';
-  }
-  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-});
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Fade out header on scroll
+  let lastScrollTop = 0;
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      header.style.opacity = '0';
+    } else {
+      header.style.opacity = '1';
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+
   const scriptURL = 'https://script.google.com/macros/s/AKfycbweBzjk8BY_LNRk9V-2TrzEo2s1-HZ_p1tBXhQnHlT9CNP2rB6rk1YPABOYolNXWVGJgA/exec';
   const form = document.getElementById('rsvp-form');
   const responseText = document.getElementById('form-response');
@@ -114,26 +115,20 @@ document.addEventListener('DOMContentLoaded', () => {
     .catch(() => {
       responseText.innerText = "Eroare la trimitere. Încearcă din nou.";
     });
-});
-
-// Scroll animation observer
-const sections = document.querySelectorAll('.section');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
   });
-}, { threshold: 0.1 });
-sections.forEach(section => observer.observe(section));
 
-// Reset scroll on load
-window.addEventListener('load', () => {
-  window.scrollTo(0, 0);
-});
+  // Scroll animation observer
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  sections.forEach(section => observer.observe(section));
 
-// Countdown timer
-document.addEventListener('DOMContentLoaded', () => {
+  // Countdown timer
   const targetDate = new Date('2025-10-11T00:00:00');
   const daysSpan = document.getElementById('days');
   const hoursSpan = document.getElementById('hours');
@@ -165,4 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // Reset scroll on load
+  window.scrollTo(0, 0);
 });
