@@ -1,6 +1,5 @@
 /* Stiluri generale */
 html, body {
-  overflow-x: hidden;
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
@@ -8,7 +7,7 @@ html, body {
   background: url('https://raw.githubusercontent.com/Sylar511/Invitatie-Nunta-Andrei-si-Ioana/refs/heads/main/wedding-stage-decoration-background.jpeg') no-repeat center center fixed;
   background-size: cover;
   color: #5d4037;
-  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Header */
@@ -20,12 +19,15 @@ header {
   padding: 10px 0;
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
 }
 
 header nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 10px;
 }
 
 header a {
@@ -33,14 +35,15 @@ header a {
   color: #b71c1c;
   font-weight: bold;
   cursor: pointer;
+  padding: 8px 12px;
 }
 
 /* Secțiuni */
 .section {
-  width: 100%;
+  width: calc(100% - 40px);
   max-width: 1000px;
   margin: 100px auto 50px;
-  padding: 60px 40px;
+  padding: 60px 20px;
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 12px;
   box-sizing: border-box;
@@ -49,7 +52,7 @@ header a {
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-.section > * {
+.centered-content {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -65,18 +68,36 @@ header a {
   font-size: 2.5em;
   font-weight: normal;
   color: #5d4037;
-  text-align: center;
   margin-bottom: 20px;
   font-family: 'Open Sans', sans-serif;
 }
 
 .intro-text {
-  text-align: center;
   font-size: 1.2em;
   margin-top: 10px;
 }
 
-/* Titlu principal */
+.map-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  margin: 20px 0;
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+
 h1 {
   font-family: 'Alex Brush', cursive;
   font-size: 4em;
@@ -84,15 +105,14 @@ h1 {
   text-align: center;
 }
 
-/* Numărătoare inversă */
 .countdown {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 20px;
+  gap: 15px;
   flex-wrap: wrap;
-  margin: 30px auto;
-  max-width: 100%;
+  margin: 30px 0;
+  font-weight: bold;
+  font-size: 1.8em;
 }
 
 .count-box {
@@ -106,8 +126,6 @@ h1 {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-::contentReference[oaicite:0]{index=0}
- 
 #soul-people {
   display: flex;
   flex-direction: column;
@@ -115,10 +133,10 @@ h1 {
   justify-content: center;
   padding: 80px 40px 50px;
   text-align: center;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
-
 
 #soul-people h2 {
   font-size: 2.5em;
@@ -152,76 +170,32 @@ h1 {
   animation: pulse 1.5s infinite;
 }
 
-.map-container {
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  margin: 20px 0;
-}
-
-.map-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border: 0;
-  width: 100%;
-  height: 100%;
-}
-
 @keyframes pulse {
-  0%   { transform: scale(1); opacity: 0.8; }
-  50%  { transform: scale(1.2); opacity: 1; }
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
   100% { transform: scale(1); opacity: 0.8; }
 }
 
 @media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
   .section {
     padding: 40px 20px;
     margin: 70px 10px;
   }
 
-  #soul-people h2 {
-    font-size: 2em;
-  }
-
-  .soul-icon {
-    font-size: 2.5em;
-  }
-
-/*  iframe {
-    height: 200px;
-  }*/
-
   .countdown {
-    flex-direction: column;
-    align-items: center;
-  }
-
-    header nav {
-    display: none;
-    flex-direction: column;
-    background: rgba(255, 255, 255, 0.95);
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    padding: 10px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-
-  header nav.active {
-    display: flex;
-  }
-
-  header nav a {
-    padding: 10px 20px;
-    text-align: center;
+    flex-direction: row;
+    justify-content: center;
   }
 
   h1 {
@@ -235,7 +209,6 @@ h1 {
     font-size: 1em;
   }
 }
-
 
 #backToTop {
   position: fixed;
