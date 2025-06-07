@@ -1,9 +1,8 @@
 // RSVP form logic
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Fade out header on scroll
-  let lastScrollTop = 0;
   const header = document.querySelector('header');
+  let lastScrollTop = 0;
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     if (scrollTop > lastScrollTop && scrollTop > 100) {
