@@ -91,7 +91,6 @@ h1 {
   flex-wrap: wrap;
   margin: 30px auto;
   max-width: 100%;
-  text-align: center;
 }
 
 .count-box {
@@ -102,6 +101,8 @@ h1 {
   min-width: 100px;
   text-align: center;
   color: #b71c1c;
+  font-weight: bold;
+  font-size: 1.5em;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
