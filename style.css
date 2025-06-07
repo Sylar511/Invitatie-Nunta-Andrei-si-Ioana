@@ -7,6 +7,7 @@ html, body {
   background: url('https://raw.githubusercontent.com/Sylar511/Invitatie-Nunta-Andrei-si-Ioana/refs/heads/main/wedding-stage-decoration-background.jpeg') no-repeat center center fixed;
   background-size: cover;
   color: #5d4037;
+  max-width: 100vw;
   overflow-x: hidden;
 }
 
@@ -19,31 +20,36 @@ header {
   padding: 10px 0;
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  display: flex;
-  justify-content: center;
 }
 
-header nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
+/* Linkuri */
 header a {
   text-decoration: none;
   color: #b71c1c;
   font-weight: bold;
   cursor: pointer;
-  padding: 8px 12px;
+  padding: 8px 16px;
+  display: inline-block;
+}
+
+/* Buton ☰ */
+.mobile-nav-toggle {
+  display: none;
+  font-size: 2em;
+  color: #b71c1c;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  cursor: pointer;
+  z-index: 1100;
 }
 
 /* Secțiuni */
 .section {
-  width: calc(100% - 40px);
+  width: 100%;
   max-width: 1000px;
   margin: 100px auto 50px;
-  padding: 60px 20px;
+  padding: 60px 40px;
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 12px;
   box-sizing: border-box;
@@ -54,8 +60,10 @@ header a {
 
 .centered-content {
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+}
+
+.section > * {
   text-align: center;
 }
 
@@ -68,11 +76,13 @@ header a {
   font-size: 2.5em;
   font-weight: normal;
   color: #5d4037;
+  text-align: center;
   margin-bottom: 20px;
   font-family: 'Open Sans', sans-serif;
 }
 
 .intro-text {
+  text-align: center;
   font-size: 1.2em;
   margin-top: 10px;
 }
@@ -177,25 +187,31 @@ h1 {
 }
 
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
+  .mobile-nav-toggle {
+    display: block;
   }
 
   header nav {
+    display: none;
     flex-direction: column;
-    align-items: center;
-    gap: 8px;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  header nav.active {
+    display: flex;
   }
 
   .section {
     padding: 40px 20px;
     margin: 70px 10px;
-  }
-
-  .countdown {
-    flex-direction: row;
-    justify-content: center;
   }
 
   h1 {
