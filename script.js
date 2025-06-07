@@ -154,3 +154,17 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 });
+
+// Fade out header on scroll
+let lastScrollTop = 0;
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  if (scrollTop > lastScrollTop && scrollTop > 100) {
+    header.style.opacity = '0';
+  } else {
+    header.style.opacity = '1';
+  }
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
+
