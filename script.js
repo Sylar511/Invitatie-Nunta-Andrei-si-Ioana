@@ -1,17 +1,21 @@
 // RSVP form logic
 document.addEventListener('DOMContentLoaded', () => {
+  // Setează restaurarea scroll-ului manual (încă din DOMContentLoaded)
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  // Reset scroll la încărcare
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
   const header = document.querySelector('header');
   let lastScrollTop = 0;
 
   // Fade out header on scroll
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    if (scrollTop > lastScrollTop && scrollTop > 100) {
-      header.style.opacity = '0';
-    } else {
-      header.style.opacity = '1';
-    }
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    header.style.opacity = (scrollTop > lastScrollTop && scrollTop > 100) ? '0' : '1';
+    lastScrollTop = Math.max(scrollTop, 0);
   });
 
   const scriptURL = 'https://script.google.com/macros/s/AKfycbweBzjk8BY_LNRk9V-2TrzEo2s1-HZ_p1tBXhQnHlT9CNP2rB6rk1YPABOYolNXWVGJgA/exec';
@@ -96,25 +100,25 @@ document.addEventListener('DOMContentLoaded', () => {
       method: 'POST',
       body: formData
     })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        localStorage.setItem('rsvpConfirmed', 'true');
-        form.reset();
-        form.style.display = 'none';
-        const msg = document.createElement('p');
-        msg.innerText = data.message;
-        msg.style.color = '#2e7d32';
-        msg.style.fontWeight = 'bold';
-        form.parentElement.appendChild(msg);
-        window.scrollTo({ top: 0, behavior: 'instant' });
-      } else {
-        responseText.innerText = data.message;
-      }
-    })
-    .catch(() => {
-      responseText.innerText = "Eroare la trimitere. Încearcă din nou.";
-    });
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          localStorage.setItem('rsvpConfirmed', 'true');
+          form.reset();
+          form.style.display = 'none';
+          const msg = document.createElement('p');
+          msg.innerText = data.message;
+          msg.style.color = '#2e7d32';
+          msg.style.fontWeight = 'bold';
+          form.parentElement.appendChild(msg);
+          window.scrollTo({ top: 0, behavior: 'instant' });
+        } else {
+          responseText.innerText = data.message;
+        }
+      })
+      .catch(() => {
+        responseText.innerText = "Eroare la trimitere. Încearcă din nou.";
+      });
   });
 
   // Scroll animation observer
@@ -160,21 +164,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
-
-// Reset scroll on page load
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, 0);
 });
-
-  // Reset scroll position when navigating or refreshing
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-
-/*window.addEventListener('load', () => {
-  window.scrollTo(0, 0);
-});
-
-
