@@ -168,3 +168,13 @@ window.addEventListener('load', () => {
   }, 0);
 });
 
+  // Reset scroll position when navigating or refreshing
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('load', () => {
+  window.scrollTo(0, 0);
+});
+
+
