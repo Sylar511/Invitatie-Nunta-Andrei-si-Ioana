@@ -161,8 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  //Reset scroll
-window.addEventListener('beforeunload', () => {
-  window.scrollTo(0, 0);
+// Reset scroll on page load
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, 0);
 });
 
