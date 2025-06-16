@@ -11,13 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header');
   let lastScrollTop = 0;
 
-// Fix pentru scroll pe mobil la prima încărcare
-setTimeout(() => {
-  if (window.scrollY > 0) {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }
-}, 100);
-
   // Fade out header on scroll
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -172,3 +165,10 @@ setTimeout(() => {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 });
+
+// Fix pentru scroll pe mobil la prima încărcare
+setTimeout(() => {
+  if (window.scrollY > 0) {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+}, 100);
