@@ -5,11 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
     history.scrollRestoration = 'manual';
   }
 
-  // Reset scroll la încărcare
-  window.scrollTo({ top: 0, behavior: 'instant' });
+  // Reset scroll sus pe orice dispozitiv (mobil și desktop)
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;        // fallback
+    document.documentElement.scrollTop = 0; // fallback
+  }, 50); // delay mic ca să nu interfereze cu layout-ul final
+});
 
-  const header = document.querySelector('header');
-  let lastScrollTop = 0;
+// Prevenim păstrarea poziției la refresh (unele browsere o fac oricum)
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
 
   // Fade out header on scroll
   window.addEventListener('scroll', () => {
