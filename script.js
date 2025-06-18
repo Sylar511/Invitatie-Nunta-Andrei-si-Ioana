@@ -18,13 +18,13 @@ window.addEventListener('load', () => {
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
-
+  /*
   // Fade out header on scroll
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     header.style.opacity = (scrollTop > lastScrollTop && scrollTop > 100) ? '0' : '1';
     lastScrollTop = Math.max(scrollTop, 0);
-  });
+  });*/
 
   const scriptURL = 'https://script.google.com/macros/s/AKfycbweBzjk8BY_LNRk9V-2TrzEo2s1-HZ_p1tBXhQnHlT9CNP2rB6rk1YPABOYolNXWVGJgA/exec';
   const form = document.getElementById('rsvp-form');
