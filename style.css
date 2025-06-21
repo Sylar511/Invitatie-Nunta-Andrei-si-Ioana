@@ -56,7 +56,7 @@ header a {
   max-width: 1000px;
   margin: 100px auto 50px auto;
   padding: 60px 20px;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 12px;
   box-sizing: border-box;
   opacity: 0;
@@ -240,13 +240,13 @@ h1 {
   h1 {
     font-size: 2.5em;
   }
-
+/*
   form label,
   form input,
   form select,
   form button {
     font-size: 1em;
-  }
+  }*/
 
   .countdown {
   width: 100%;
@@ -309,4 +309,149 @@ h1 {
 #backToTop:hover {
   background-color: #d32f2f;
   transform: scale(1.1);
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+}
+
+form label {
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #5d4037;
+  font-size: 1em;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1em;
+  background-color: #fff8f6;
+  transition: border 0.3s;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #b71c1c;
+  outline: none;
+}
+
+form button {
+  margin-top: 25px;
+  padding: 12px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  background-color: #b71c1c;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #a31818;
+}
+
+form .error {
+  border-color: #d32f2f;
+  background-color: #ffebee;
+}
+
+#form-response {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #b71c1c;
+  text-align: center;
+}
+
+#guests-wrapper {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+#guests-wrapper.visible {
+  max-height: 800px; /* suficient pentru toate câmpurile */
+  opacity: 1;
+}
+
+.hidden-section {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.hidden-section.visible {
+  max-height: 500px; /* ajustabil */
+  opacity: 1;
+}
+
+.checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  stroke-width: 2;
+  stroke: #4CAF50;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #4CAF50;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke: #4CAF50;
+  fill: none;
+  animation: stroke 0.6s ease-in-out forwards;
+}
+
+.checkmark__check {
+  stroke: #fff; /* <- bifa albă pe fundal verde */
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s ease-in-out 0.6s forwards;
+  fill: none;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0 0 0 30px #4CAF50;
+  }
 }
