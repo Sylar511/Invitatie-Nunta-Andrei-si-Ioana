@@ -148,12 +148,18 @@ if ('scrollRestoration' in history) {
           localStorage.setItem('rsvpConfirmed', 'true');
           form.reset();
           form.style.display = 'none';
-          const msg = document.createElement('p');
-          msg.innerText = data.message;
-          msg.style.color = '#2e7d32';
-          msg.style.fontWeight = 'bold';
-          form.parentElement.appendChild(msg);
-          window.scrollTo({ top: 0, behavior: 'instant' });
+
+         const confirmationContainer = document.getElementById('confirmation-container');
+confirmationContainer.innerHTML = `
+  <svg class="checkmark" viewBox="0 0 52 52">
+    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+    <path class="checkmark__check" fill="none" d="M14 27l7 7 16-16"/>
+  </svg>
+  <p style="color: #2e7d32; font-weight: bold; font-size: 1.1em; margin-top: 10px;">
+    ${data.message}
+  </p>
+`;
+
         } else {
           responseText.innerText = data.message;
         }
