@@ -379,3 +379,14 @@ form .error {
   text-align: center;
 }
 
+#guests-wrapper {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+#guests-wrapper.visible {
+  max-height: 800px; /* suficient pentru toate câmpurile */
+  opacity: 1;
+}
