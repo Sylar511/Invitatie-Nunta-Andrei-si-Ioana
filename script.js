@@ -48,8 +48,6 @@ if ('scrollRestoration' in history) {
   const guests = document.getElementById('guests');
   const attendance = document.getElementById('attendance');
   const guestsWrapper = document.getElementById('guests-wrapper');
-  const menuWrapper = document.getElementById('menu-wrapper');
-  const kidsWrapper = document.getElementById('kids-wrapper');
   const menu = document.getElementById('menu');
   const kids = document.getElementById('kids');
   const ipField = document.getElementById('ip');
