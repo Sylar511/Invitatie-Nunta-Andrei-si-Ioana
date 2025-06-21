@@ -48,6 +48,10 @@ if ('scrollRestoration' in history) {
   const guests = document.getElementById('guests');
   const attendance = document.getElementById('attendance');
   const guestsWrapper = document.getElementById('guests-wrapper');
+  const menuWrapper = document.getElementById('menu-wrapper');
+  const kidsWrapper = document.getElementById('kids-wrapper');
+  const menu = document.getElementById('menu');
+  const kids = document.getElementById('kids');
   const ipField = document.getElementById('ip');
 
   // Obține IP-ul utilizatorului
@@ -74,14 +78,23 @@ if ('scrollRestoration' in history) {
 
   // Afișează selectorul de persoane dacă este selectat "Da"
   attendance.addEventListener('change', () => {
-    if (attendance.value === "Da") {
-      guestsWrapper.style.display = "block";
-    } else {
-      guestsWrapper.style.display = "none";
-      guests.value = "";
-      guests.classList.remove('error');
-    }
-  });
+  if (attendance.value === "Da") {
+    guestsWrapper.style.display = "block";
+    menuWrapper.style.display = "block";
+    kidsWrapper.style.display = "block";
+  } else {
+    guestsWrapper.style.display = "none";
+    menuWrapper.style.display = "none";
+    kidsWrapper.style.display = "none";
+    guests.value = "";
+    menu.value = "";
+    kids.value = "";
+    guests.classList.remove('error');
+    menu.classList.remove('error');
+    kids.classList.remove('error');
+  }
+});
+
 
   // Validare și trimitere formular
   form.addEventListener('submit', e => {
@@ -91,6 +104,8 @@ if ('scrollRestoration' in history) {
     firstname.classList.remove('error');
     guests.classList.remove('error');
     attendance.classList.remove('error');
+    menu.classList.remove('error');
+    kids.classList.remove('error');
     responseText.innerText = "";
 
     let valid = true;
@@ -111,6 +126,18 @@ if ('scrollRestoration' in history) {
       guests.classList.add('error');
       valid = false;
     }
+    if (attendance.value === "Da" && !guests.value) {
+  guests.classList.add('error');
+  valid = false;
+    }
+    if (attendance.value === "Da" && !menu.value) {
+  menu.classList.add('error');
+  valid = false;
+  }
+    if (attendance.value === "Da" && !kids.value) {
+  kids.classList.add('error');
+  valid = false;
+}
 
     if (!valid) {
       responseText.innerText = "Te rugăm să completezi câmpurile obligatorii.";
