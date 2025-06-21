@@ -79,15 +79,22 @@ if ('scrollRestoration' in history) {
   // Afișează selectorul de persoane dacă este selectat "Da"
   attendance.addEventListener('change', () => {
   if (attendance.value === "Da") {
-    guestsWrapper.classList.add('visible');
+    guestsWrapper.style.display = "block";
+    menuWrapper.style.display = "block";
+    kidsWrapper.style.display = "block";
   } else {
-    guestsWrapper.classList.remove('visible');
+    guestsWrapper.style.display = "none";
+    menuWrapper.style.display = "none";
+    kidsWrapper.style.display = "none";
     guests.value = "";
+    menu.value = "";
+    kids.value = "";
     guests.classList.remove('error');
-    document.getElementById('menu').value = "";
-    document.getElementById('kids').value = "";
+    menu.classList.remove('error');
+    kids.classList.remove('error');
   }
 });
+
 
   // Validare și trimitere formular
   form.addEventListener('submit', e => {
@@ -148,19 +155,12 @@ if ('scrollRestoration' in history) {
           localStorage.setItem('rsvpConfirmed', 'true');
           form.reset();
           form.style.display = 'none';
-
-         const confirmationContainer = document.getElementById('confirmation-container');
-confirmationContainer.innerHTML = `
-  <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-    <path class="checkmark__check" fill="none" d="M14 27l7 7 16-16"/>
-  </svg>
-  <p style="color: #2e7d32; font-weight: bold; font-size: 1.1em; margin-top: 10px;">
-    ${data.message}
-  </p>
-`;
-
-
+          const msg = document.createElement('p');
+          msg.innerText = data.message;
+          msg.style.color = '#2e7d32';
+          msg.style.fontWeight = 'bold';
+          form.parentElement.appendChild(msg);
+          window.scrollTo({ top: 0, behavior: 'instant' });
         } else {
           responseText.innerText = data.message;
         }
