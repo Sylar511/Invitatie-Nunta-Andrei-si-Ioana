@@ -144,22 +144,24 @@ if ('scrollRestoration' in history) {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.success) {
-          localStorage.setItem('rsvpConfirmed', 'true');
-          form.reset();
-          form.style.display = 'none';
+       if (data.success) {
+  localStorage.setItem('rsvpConfirmed', 'true');
+  form.reset();
+  form.style.display = 'none';
 
-         const confirmationContainer = document.getElementById('confirmation-container');
-confirmationContainer.innerHTML = `
-  <svg class="checkmark" viewBox="0 0 52 52">
-    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-    <path class="checkmark__check" d="M14 27l7 7 16-16" fill="none"/>
-  </svg>
-  <p style="color: #2e7d32; font-weight: bold; font-size: 1.1em; margin-top: 10px;">
-    ${data.message}
-  </p>
-`;
-          
+  const confirmationContainer = document.createElement('div');
+  confirmationContainer.classList.add('confirmation-message');
+
+  confirmationContainer.innerHTML = `
+    <div class="checkmark-animation">&#10004;</div>
+    <p style="color: #2e7d32; font-weight: bold; font-size: 1.1em; margin-top: 10px;">
+      ${data.message}
+    </p>
+  `;
+
+  form.parentElement.appendChild(confirmationContainer);
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
         } else {
           responseText.innerText = data.message;
         }
