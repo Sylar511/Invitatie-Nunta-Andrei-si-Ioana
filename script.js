@@ -151,16 +151,15 @@ if ('scrollRestoration' in history) {
 
          const confirmationContainer = document.getElementById('confirmation-container');
 confirmationContainer.innerHTML = `
-  <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+  <svg class="checkmark" viewBox="0 0 52 52">
     <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-    <path class="checkmark__check" fill="none" d="M14 27l7 7 16-16"/>
+    <path class="checkmark__check" d="M14 27l7 7 16-16" fill="none"/>
   </svg>
   <p style="color: #2e7d32; font-weight: bold; font-size: 1.1em; margin-top: 10px;">
     ${data.message}
   </p>
 `;
-
-
+          
         } else {
           responseText.innerText = data.message;
         }
