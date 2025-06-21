@@ -75,15 +75,11 @@ if ('scrollRestoration' in history) {
     });
 
   // Afișează selectorul de persoane dacă este selectat "Da"
-  attendance.addEventListener('change', () => {
+ attendance.addEventListener('change', () => {
   if (attendance.value === "Da") {
     guestsWrapper.style.display = "block";
-    menuWrapper.style.display = "block";
-    kidsWrapper.style.display = "block";
   } else {
     guestsWrapper.style.display = "none";
-    menuWrapper.style.display = "none";
-    kidsWrapper.style.display = "none";
     guests.value = "";
     menu.value = "";
     kids.value = "";
@@ -92,7 +88,6 @@ if ('scrollRestoration' in history) {
     kids.classList.remove('error');
   }
 });
-
 
   // Validare și trimitere formular
   form.addEventListener('submit', e => {
