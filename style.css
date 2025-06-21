@@ -378,3 +378,7 @@ form .error {
   color: #b71c1c;
   text-align: center;
 }
+
+#guests-wrapper {
+  display: none;
+}
