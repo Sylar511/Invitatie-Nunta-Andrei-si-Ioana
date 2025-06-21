@@ -1,7 +1,7 @@
-
 * {
   box-sizing: border-box;
 }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -13,28 +13,31 @@ html, body {
   max-width: 100vw;
   overflow-x: hidden;
 }
+
 .section {
   width: 100%;
   max-width: 1000px;
   margin: 100px auto 50px auto;
   padding: 60px 20px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 12px;
-  box-sizing: border-box;
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
+
 .section.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
 h1 {
   font-family: 'Alex Brush', cursive;
   font-size: 4em;
   color: #b71c1c;
   text-align: center;
 }
+
 .countdown {
   display: flex;
   justify-content: center;
@@ -44,6 +47,7 @@ h1 {
   font-weight: bold;
   font-size: 1.8em;
 }
+
 .count-box {
   background-color: #fff3f0;
   border: 2px solid #b71c1c;
@@ -53,25 +57,33 @@ h1 {
   text-align: center;
   color: #b71c1c;
 }
+
 form {
   max-width: 600px;
   margin: 0 auto;
   padding: 30px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
 form label {
   display: block;
   margin-top: 20px;
   font-weight: bold;
+  color: #5d4037;
 }
+
 form input, form select {
   width: 100%;
   padding: 10px;
   margin-top: 8px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  font-size: 1em;
+  background-color: #fff8f6;
 }
+
 form button {
   margin-top: 25px;
   padding: 12px 20px;
@@ -83,15 +95,19 @@ form button {
   border-radius: 8px;
   cursor: pointer;
 }
+
 form button:hover {
   background-color: #a31818;
 }
+
 #form-response {
   margin-top: 15px;
   font-weight: bold;
   color: #b71c1c;
   text-align: center;
 }
+
+/* Checkmark animation */
 .checkmark-animation {
   width: 60px;
   height: 60px;
@@ -101,7 +117,9 @@ form button:hover {
   stroke: #4CAF50;
   stroke-miterlimit: 10;
   animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+  box-shadow: inset 0px 0px 0px #4CAF50;
 }
+
 .checkmark__circle {
   stroke-dasharray: 166;
   stroke-dashoffset: 166;
@@ -110,6 +128,7 @@ form button:hover {
   fill: none;
   animation: stroke 0.6s ease-in-out forwards;
 }
+
 .checkmark__check {
   stroke: #fff;
   stroke-width: 3;
@@ -120,15 +139,31 @@ form button:hover {
   animation: stroke 0.3s ease-in-out 0.6s forwards;
   fill: none;
 }
+
 @keyframes stroke {
-  100% { stroke-dashoffset: 0; }
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
+
 @keyframes fill {
   100% {
     box-shadow: inset 0 0 0 30px #4CAF50;
     transform: scale(1);
   }
 }
+
 @keyframes scale {
-  0%, 100% { transform: scale(1); }
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
