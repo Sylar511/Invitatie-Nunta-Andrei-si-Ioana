@@ -181,6 +181,17 @@ h1 {
   color: #4e342e;
 }*/
 
+.soul-group h3,
+.soul-group p,
+#soul-people .versuri,
+#soul-people .soul-line {
+  font-family: 'Italianno', cursive !important;
+  font-size: 2em;
+  color: #5d4037;
+  text-align: center;
+  margin: 10px 0;
+}
+
 .soul-group {
   margin: 40px 0;
   text-align: center;
