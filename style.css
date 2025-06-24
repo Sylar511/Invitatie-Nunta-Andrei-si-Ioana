@@ -192,6 +192,23 @@ h1 {
   animation: pulse 1.5s infinite;
 }
 
+.soul-line {
+  font-family: 'Italianno', cursive;
+  font-size: 2em;
+  color: #5d4037;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.decorative-line {
+  width: 60%;
+  height: 4px;
+  background-color: #ed143a;
+  border-radius: 10px;
+  margin: 20px auto 0 auto;
+  position: relative;
+}
+
 .map-wrapper {
   width: 100%;
   aspect-ratio: 16 / 9;
