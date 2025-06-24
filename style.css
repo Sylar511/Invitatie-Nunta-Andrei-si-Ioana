@@ -438,21 +438,26 @@ form .error {
 #guests-wrapper {
   display: none;
 }
+#rsvp h2 {
+  margin-top: 0;
+  font-family: 'Italianno', cursive;
+  font-size: 2.8em;
+  color: #5d4037;
+}
+
+#rsvp .intro-verse {
+  margin-top: -10px;
+  margin-bottom: 40px;
+  font-size: 2em;
+  line-height: 1.4em;
+  font-family: 'Italianno', cursive;
+  color: #5d4037;
+}
 
 .rsvp-subtitle {
   font-family: 'Open Sans', sans-serif;
   font-size: 1em;
   color: #5d4037;
   text-align: center;
-  margin-top: -20px;
-  margin-bottom: 30px;
-}
-
-#rsvp .intro-verse {
-  font-family: 'Italianno', cursive;
-  font-size: 2em;
-  color: #5d4037;
-  text-align: center;
-  margin-top: -20px;
-  margin-bottom: 10px;
+  margin: 10px 0 25px;
 }
