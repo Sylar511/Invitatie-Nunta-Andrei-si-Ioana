@@ -97,6 +97,14 @@ header a {
   margin: -10px 0 10px 0;
 }
 
+.intro-verse {
+  font-family: 'Italianno', cursive;
+  font-size: 2em;
+  text-align: center;
+  color: #000;
+  margin: 10px 0;
+}
+
 .funny-line {
   font-family: 'Italianno', cursive;
   font-size: 2em;
