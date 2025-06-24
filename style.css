@@ -211,7 +211,7 @@ h1 {
 }
 
 .versuri {
-  font-family: 'Italianno', cursive;
+  font-family: 'Italianno', cursive !important;
   font-size: 2em;
   color: #5d4037;
   text-align: center;
