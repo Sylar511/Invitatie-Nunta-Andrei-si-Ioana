@@ -95,6 +95,14 @@ header a {
   margin-top: 10px;
 }
 
+.funny-line {
+  font-family: 'Italianno', cursive;
+  font-size: 2em;
+  color: #5d4037;
+  text-align: center;
+  margin: -10px 0 10px 0;
+}
+
 .map-container {
   width: 100%;
   height: auto;
