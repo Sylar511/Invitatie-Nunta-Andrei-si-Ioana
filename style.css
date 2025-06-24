@@ -210,6 +210,15 @@ h1 {
   margin: 20px 0;
 }
 
+.versuri {
+  font-family: 'Italianno', cursive;
+  font-size: 2em;
+  color: #5d4037;
+  text-align: center;
+  line-height: 1.5em;
+  margin: 10px 0;
+}
+
 .decorative-line {
   width: 60%;
   height: 4px;
