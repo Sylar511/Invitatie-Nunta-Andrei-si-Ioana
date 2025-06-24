@@ -438,3 +438,21 @@ form .error {
 #guests-wrapper {
   display: none;
 }
+
+.rsvp-subtitle {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  color: #5d4037;
+  text-align: center;
+  margin-top: -20px;
+  margin-bottom: 30px;
+}
+
+#rsvp .intro-verse {
+  font-family: 'Italianno', cursive;
+  font-size: 2em;
+  color: #5d4037;
+  text-align: center;
+  margin-top: -20px;
+  margin-bottom: 10px;
+}
