@@ -90,9 +90,11 @@ header a {
 }
 
 .intro-text {
+  font-family: 'Italianno', cursive;
+  font-size: 2em;
+  color: #5d4037;
   text-align: center;
-  font-size: 1.2em;
-  margin-top: 10px;
+  margin: -10px 0 10px 0;
 }
 
 .funny-line {
