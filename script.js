@@ -19,15 +19,6 @@ backToTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-  // Reset scroll sus pe orice dispozitiv (mobil și desktop)
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;        // fallback
-    document.documentElement.scrollTop = 0; // fallback
-  }, 50); // delay mic ca să nu interfereze cu layout-ul final
-});
-
 // Prevenim păstrarea poziției la refresh (unele browsere o fac oricum)
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
@@ -207,13 +198,6 @@ if ('scrollRestoration' in history) {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 });
-
-// Fix pentru scroll pe mobil la prima încărcare
-setTimeout(() => {
-  if (window.scrollY > 0) {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }
-}, 100);
 
 const backToTopBtn = document.getElementById("backToTop");
 
