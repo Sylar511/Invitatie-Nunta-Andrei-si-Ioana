@@ -183,10 +183,11 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 });
 
-// Asigură-te că la încărcare suntem în top (pe mobil)
+// Forțează poziția în top la orice încărcare (inclusiv reload, inclusiv mobil)
 window.addEventListener('load', () => {
   setTimeout(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, 0);
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0; // fallback
+    document.documentElement.scrollTop = 0; // fallback
+  }, 0); // fără delay
 });
-
