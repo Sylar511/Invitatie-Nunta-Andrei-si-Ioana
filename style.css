@@ -89,7 +89,7 @@ header a {
   font-weight: normal;
   color: black;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .intro-text {
@@ -114,6 +114,15 @@ header a {
   color: #5d4037;
   text-align: center;
   margin: -10px 0 10px 0;
+}
+
+.event-note {
+  font-family: 'Italianno', cursive;
+  font-size: 1.8em;
+  color: #5d4037;
+  text-align: center;
+  margin-top: -20px;
+  margin-bottom: 20px;
 }
 
 .map-container {
