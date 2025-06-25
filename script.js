@@ -1,35 +1,23 @@
 // RSVP form logic
 document.addEventListener('DOMContentLoaded', () => {
-  // Setează restaurarea scroll-ului manual (încă din DOMContentLoaded)
+  // Oprește păstrarea poziției scroll-ului la refresh
   if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
   }
 
   const backToTopBtn = document.getElementById("backToTop");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    backToTopBtn.classList.add("show");
-  } else {
-    backToTopBtn.classList.remove("show");
-  }
-});
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      backToTopBtn.classList.add("show");
+    } else {
+      backToTopBtn.classList.remove("show");
+    }
+  });
 
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-// Prevenim păstrarea poziției la refresh (unele browsere o fac oricum)
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-  /*
-  // Fade out header on scroll
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    header.style.opacity = (scrollTop > lastScrollTop && scrollTop > 100) ? '0' : '1';
-    lastScrollTop = Math.max(scrollTop, 0);
-  });*/
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
   const scriptURL = 'https://script.google.com/macros/s/AKfycbweBzjk8BY_LNRk9V-2TrzEo2s1-HZ_p1tBXhQnHlT9CNP2rB6rk1YPABOYolNXWVGJgA/exec';
   const form = document.getElementById('rsvp-form');
@@ -65,20 +53,20 @@ if ('scrollRestoration' in history) {
         });
     });
 
-  // Afișează selectorul de persoane dacă este selectat "Da"
- attendance.addEventListener('change', () => {
-  if (attendance.value === "Da") {
-    guestsWrapper.style.display = "block";
-  } else {
-    guestsWrapper.style.display = "none";
-    guests.value = "";
-    menu.value = "";
-    kids.value = "";
-    guests.classList.remove('error');
-    menu.classList.remove('error');
-    kids.classList.remove('error');
-  }
-});
+  // Afișează opțiuni suplimentare dacă e selectat „Da”
+  attendance.addEventListener('change', () => {
+    if (attendance.value === "Da") {
+      guestsWrapper.style.display = "block";
+    } else {
+      guestsWrapper.style.display = "none";
+      guests.value = "";
+      menu.value = "";
+      kids.value = "";
+      guests.classList.remove('error');
+      menu.classList.remove('error');
+      kids.classList.remove('error');
+    }
+  });
 
   // Validare și trimitere formular
   form.addEventListener('submit', e => {
@@ -110,18 +98,14 @@ if ('scrollRestoration' in history) {
       guests.classList.add('error');
       valid = false;
     }
-    if (attendance.value === "Da" && !guests.value) {
-  guests.classList.add('error');
-  valid = false;
-    }
     if (attendance.value === "Da" && !menu.value) {
-  menu.classList.add('error');
-  valid = false;
-  }
+      menu.classList.add('error');
+      valid = false;
+    }
     if (attendance.value === "Da" && !kids.value) {
-  kids.classList.add('error');
-  valid = false;
-}
+      kids.classList.add('error');
+      valid = false;
+    }
 
     if (!valid) {
       responseText.innerText = "Te rugăm să completezi câmpurile obligatorii.";
@@ -154,7 +138,7 @@ if ('scrollRestoration' in history) {
       });
   });
 
-  // Scroll animation observer
+  // Animație pentru apariția secțiunilor
   const sections = document.querySelectorAll('.section');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -165,7 +149,7 @@ if ('scrollRestoration' in history) {
   }, { threshold: 0.1 });
   sections.forEach(section => observer.observe(section));
 
-  // Countdown timer
+  // Countdown
   const targetDate = new Date('2025-10-11T00:00:00');
   const daysSpan = document.getElementById('days');
   const hoursSpan = document.getElementById('hours');
@@ -199,20 +183,8 @@ if ('scrollRestoration' in history) {
   setInterval(updateCountdown, 1000);
 });
 
-const backToTopBtn = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    backToTopBtn.classList.add("show");
-  } else {
-    backToTopBtn.classList.remove("show");
-  }
-});
-
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+// Asigură-te că la încărcare suntem în top (pe mobil)
+window.addEventListener('load', () => {
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 });
