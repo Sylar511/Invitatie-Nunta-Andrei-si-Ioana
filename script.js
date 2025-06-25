@@ -185,6 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Asigură-te că la încărcare suntem în top (pe mobil)
 window.addEventListener('load', () => {
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0;
+  setTimeout(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, 0);
 });
+
