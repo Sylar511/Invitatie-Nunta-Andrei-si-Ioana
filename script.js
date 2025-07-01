@@ -185,9 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Forțează poziția în top la orice încărcare (inclusiv reload, inclusiv mobil)
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0; // fallback
-    document.documentElement.scrollTop = 0; // fallback
-  }, 0); // fără delay
+  // elimină clasa no-scroll după ce pagina este sus
+  document.body.classList.remove('no-scroll');
+
+  // asigură scrollTop resetat fără efect vizibil
+  window.scrollTo(0, 0);
+  document.body.scrollTop = 0; // fallback
+  document.documentElement.scrollTop = 0; // fallback
 });
