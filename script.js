@@ -1,9 +1,5 @@
 // RSVP form logic
 document.addEventListener('DOMContentLoaded', () => {
-  // Oprește păstrarea poziției scroll-ului la refresh
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
 
   const backToTopBtn = document.getElementById("backToTop");
 
