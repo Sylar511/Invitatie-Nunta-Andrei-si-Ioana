@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbweBzjk8BY_LNRk9V-2TrzEo2s1-HZ_p1tBXhQnHlT9CNP2rB6rk1YPABOYolNXWVGJgA/exec';
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbypBzviBLx44qqsrfCqunb9vCnLAPQrpGwFZrNDdtTXXxyPRXyUNZ2W9QMmragKYL7FZw/exec';
   const form = document.getElementById('rsvp-form');
   const responseText = document.getElementById('form-response');
   const lastname = document.getElementById('lastname');
